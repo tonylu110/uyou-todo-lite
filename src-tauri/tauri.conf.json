@@ -1,0 +1,77 @@
+{
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "uyou-todo-lite",
+    "version": "1.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true,
+        "setAlwaysOnTop": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "icon": [
+        "icons/icon.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "identifier": "cn.org.uyou.todo.lite",
+      "targets": "all",
+      "windows": {
+        "allowDowngrades": true,
+        "certificateThumbprint": null,
+        "digestAlgorithm": null,
+        "nsis": null,
+        "timestampUrl": null,
+        "tsp": false,
+        "webviewFixedRuntimePath": null,
+        "webviewInstallMode": {
+          "silent": true,
+          "type": "downloadBootstrapper"
+        },
+        "wix": null
+      }
+    },
+    "security": {
+      "csp": null
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "uyou ToDo Lite",
+        "width": 350,
+        "height": 700,
+        "minHeight": 600,
+        "minWidth": 350,
+        "maxWidth": 400,
+        "decorations": false
+      }
+    ]
+  }
+}
