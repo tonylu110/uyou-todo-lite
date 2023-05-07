@@ -16,7 +16,7 @@ export default defineComponent({
           onLeftFn={() => router.back()}
         />
         <SettingList>
-          
+          Settings
         </SettingList>
       </>
     )

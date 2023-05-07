@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { RouterLink, useRouter } from "vue-router"
+import { useRouter } from "vue-router"
 import TabBar from "../components/TabBar";
 import ToDoList from "../components/ToDoList";
 
@@ -15,9 +15,7 @@ export default defineComponent({
           title="uyou ToDo"
           onLeftFn={() => router.push('/settings')}
         />
-        <ToDoList>
-          
-        </ToDoList>
+        <ToDoList/>
       </>
     )
   }
