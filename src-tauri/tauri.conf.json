@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "uyou-todo-lite",
+    "productName": "uyou ToDo lite",
     "version": "1.0.0"
   },
   "tauri": {

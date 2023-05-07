@@ -14,8 +14,8 @@ export default defineComponent({
 
     return () => (
       <PerfectScrollbar
-        w="[calc(100vw-20px)]" h="[calc(100vh-110px)]"
-        top-0 pt-100px px-10px pb-10px
+        w="[calc(100vw-20px)]" h="[calc(100vh-100px)]"
+        top-0 pt-100px px-10px
         className="!fixed"
       >
         { renderSlot(slots, 'default') }
