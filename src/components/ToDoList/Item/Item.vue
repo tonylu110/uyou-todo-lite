@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watchEffect, Ref } from 'vue'
 import { createToast } from '../../Toast'
+import getTime from "../../../utils/getTime"
 
 const props = withDefaults(defineProps<{
   time: number
@@ -76,7 +77,7 @@ const menu = () => {
         w="100%" rounded="tl-7px tr-7px" 
         flex justify-between items-center
       >
-        <span c="#cebfae">{{ time }}</span>
+        <span c="#cebfae">{{ getTime(time) }}</span>
         <div 
           h-10px p-5px m="r-[-3px]" bg="black/7 active:black/14"
           flex justify-center items-center
