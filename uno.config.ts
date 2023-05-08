@@ -20,6 +20,12 @@ export default defineConfig({
   transformers: [
     transformerAttributifyJsx()
   ],
+  rules: [
+    ['shadow-item', { 'box-shadow': '0 2px 10px #00000030' }],
+    ['shadow-inner', { 'box-shadow': 'inset 0px 5px 10px -5px #00000030' }],
+    ['shadow-switch-in', { 'box-shadow': 'inset 1px 1px 5px #00000030' }],
+    ['shadow-switch-out', { 'box-shadow': '1px 1px 3px #00000050' }]
+  ],
   theme: {
     animation: {
       keyframes: {

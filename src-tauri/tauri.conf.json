@@ -22,7 +22,7 @@
         "close": true,
         "hide": true,
         "show": true,
-        "maximize": true,
+        "maximize": false,
         "minimize": true,
         "unmaximize": true,
         "unminimize": true,
