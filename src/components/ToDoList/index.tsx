@@ -1,4 +1,4 @@
-import { Ref, defineComponent, ref } from "vue";
+import { Ref, defineComponent, onBeforeUnmount, ref } from "vue";
 import List from "../List"
 import Item from "./Item/Item.vue";
 import ITodoList from "../../interface/ITodoListArray";
@@ -35,6 +35,8 @@ export default defineComponent({
     emitter.on('showAddItem', () => {
       showAddItem.value = !showAddItem.value
     })
+    onBeforeUnmount(() => emitter.off('showAddItem'))
+    
     const add = (time: number, text: string) => {
       list.value.unshift({
         id: time,

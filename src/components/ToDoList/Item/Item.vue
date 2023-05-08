@@ -34,9 +34,11 @@ const deleteItem = () => {
 
 const itemDom = ref(null) as unknown as Ref<Element>
 const menu = () => {
-  createToast(itemDom.value, {
-    msg: 'menu click',
-    center: true
+  navigator.clipboard.writeText(props.text).then(() => {
+    createToast(itemDom.value, {
+      msg: 'copy success',
+      center: true
+    })
   })
 }
 </script>
@@ -83,9 +85,10 @@ const menu = () => {
           flex justify-center items-center
           rounded-3px c="#6e492f" select-none
           cursor-pointer pointer-events-auto
+          opacity-0 hover:opacity-100 transition="opacity 300 ease-in-out"
           @click="menu"
         >
-          <div i-fluent:more-28-filled text-14px></div>
+          <div i-ph:copy-bold text-14px></div>
         </div>
       </div>
       <span 
