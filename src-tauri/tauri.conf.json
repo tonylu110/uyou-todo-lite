@@ -32,13 +32,14 @@
     },
     "bundle": {
       "active": true,
+      "publisher": "Anthony Lu",
       "icon": [
         "icons/icon.png",
         "icons/icon.icns",
         "icons/icon.ico"
       ],
       "identifier": "cn.org.uyou.todo.lite",
-      "targets": "all",
+      "targets": "nsis",
       "windows": {
         "allowDowngrades": true,
         "certificateThumbprint": null,
@@ -50,8 +51,7 @@
         "webviewInstallMode": {
           "silent": true,
           "type": "downloadBootstrapper"
-        },
-        "wix": null
+        }
       }
     },
     "security": {

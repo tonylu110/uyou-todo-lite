@@ -21,6 +21,18 @@ export default defineConfig({
     transformerAttributifyJsx()
   ],
   theme: {
+    animation: {
+      keyframes: {
+        toastShow: `{
+          0% {
+            bottom: calc(-1rem - 20px);
+          }
+          100% {
+            bottom: 50px;
+          }
+        }`
+      }
+    },
     colors: {
       primary: {
         d: '#5985eb',

@@ -1,4 +1,4 @@
-import { defineComponent, renderSlot } from "vue";
+import { defineComponent } from "vue";
 import List from "../List"
 import Item from "./Item/Item.vue";
 

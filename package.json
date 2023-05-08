@@ -1,8 +1,9 @@
 {
   "name": "uyou-todo-lite",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
+  "author": "Anthony Lu <taruruchan@qq.com>",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

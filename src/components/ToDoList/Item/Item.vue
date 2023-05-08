@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { watchEffect } from 'vue'
+import { ref, watchEffect, Ref } from 'vue'
+import { createToast } from '../../Toast'
 
 const props = withDefaults(defineProps<{
   time: number
@@ -29,6 +29,14 @@ const setOk = () => {
 }
 const deleteItem = () => {
   emits('del', props.time)
+}
+
+const itemDom = ref(null) as unknown as Ref<Element>
+const menu = () => {
+  createToast(itemDom.value, {
+    msg: 'menu click',
+    center: true
+  })
 }
 </script>
 
@@ -61,6 +69,7 @@ const deleteItem = () => {
       h-auto p-10px rounded-5px shadow="sm black/30"
       transition="transform !300 ease-in-out" pointer-events-none
       class="item"
+      ref="itemDom"
     >
       <div 
         bg="#ede4d8" m="l-[-10px] t-[-10px]" p="y-5px x-10px"
@@ -73,6 +82,7 @@ const deleteItem = () => {
           flex justify-center items-center
           rounded-3px c="#6e492f" select-none
           cursor-pointer pointer-events-auto
+          @click="menu"
         >
           <div i-fluent:more-28-filled text-14px></div>
         </div>
