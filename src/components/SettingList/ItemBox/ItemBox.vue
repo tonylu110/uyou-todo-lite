@@ -1,7 +1,7 @@
 <template scoped>
   <div 
     mb-10px shadow="md black/30" rounded-7px
-    w="[calc(100%-20px)]"
+    w="100%"
   >
     <div rounded-7px overflow-hidden class="box">
       <slot/>

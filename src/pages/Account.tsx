@@ -16,11 +16,11 @@ export default defineComponent({
           showLeftImg={true}
           title="Account"
           onLeftFn={() => router.back()}
+          bgColor="light"
         />
         <SettingList>
           <Item
             title={isLogin.value ? isLogin.value : 'Not Login'}
-            onItemFun={() => router.push('/account?from=settings')}
             showArrow={false}
           />
         </SettingList>

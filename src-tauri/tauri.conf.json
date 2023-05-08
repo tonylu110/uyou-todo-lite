@@ -39,7 +39,7 @@
         "icons/icon.ico"
       ],
       "identifier": "cn.org.uyou.todo.lite",
-      "targets": "nsis",
+      "targets": "all",
       "windows": {
         "allowDowngrades": true,
         "certificateThumbprint": null,

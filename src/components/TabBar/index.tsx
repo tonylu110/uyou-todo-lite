@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent, ref, watchEffect } from "vue";
 import emitter from "../../utils/emitter";
 
 export default defineComponent({
@@ -18,34 +18,45 @@ export default defineComponent({
     showRightImg: {
       default: false,
       type: Boolean
+    },
+    bgColor: {
+      default: 'default',
+      type: String
     }
   },
   emits: ['leftFn'],
   setup(props, { emit }) {
+    const isLight = ref(props.bgColor === 'light')
+
+    watchEffect(() => {
+      isLight.value = props.bgColor === 'light'
+      emitter.emit('titleColor', isLight.value)
+    })
+
     return () => (
       <div 
         backdrop-blur-7px
-        bg="#7a695cdd" sticky top-41px
+        bg={isLight.value ? 'white/50' : '#7a695cdd'} sticky top-41px
         h-50px w-screen z-1
         flex justify-center items-center
-        shadow="md black/30"
+        shadow="md black/20"
       >
         {props.showLeftImg ? (
-        <div 
+        <div
           absolute left-10px
-          border="1px solid #594b4270"
+          border="1px solid #594b4230"
           h-30px w-30px cursor-pointer
           flex justify-center items-center
           rounded-5px bg="hover:black/10 active:black/20" 
           onClick={() => emit('leftFn')}
         >
-          <div className={props.leftImg} c-white text-20px></div>
+          <div className={props.leftImg} c={isLight.value ? '#333' : 'white'} text-20px></div>
         </div>) : null}
-        <div c-white>{props.title}</div>
+        <div c={isLight.value ? '#333' : 'white'}>{props.title}</div>
         {props.showRightImg ? 
         <div 
           absolute right-10px
-          border="1px solid #594b4270"
+          border="1px solid #594b4230"
           h-30px w-30px cursor-pointer
           flex justify-center items-center
           rounded-5px bg="hover:black/10 active:black/20" 
