@@ -20,18 +20,10 @@ export default defineComponent({
           bgColor="light"
         />
         <SettingList>
-          {/* <Item
+          <Item
             title={isLogin ? 'My Account' : 'Not Login'}
-            onItemFun={() => router.push('/account?from=settings')}
-          /> */}
-          <ItemBox>
-            <Item
-              title="this is settings page"
-            />
-            <Item
-              title="don't do"
-            />
-          </ItemBox>
+            onItemFun={() => router.push('/account')}
+          />
         </SettingList>
       </>
     )

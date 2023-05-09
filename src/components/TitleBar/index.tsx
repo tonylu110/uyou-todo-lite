@@ -31,10 +31,10 @@ export default defineComponent({
           w-50px h-20px
           flex items-center justify-center
           ml-9px cursor-pointer rounded-5px
-          border={pin.value ? '1px solid error-d hover:error-h active:error-a' : '1px solid #594b4270'} 
+          border={pin.value ? '1px solid error-d hover:error-h active:error-a' : (isLight.value ? '1px solid #594b4230' : '1px solid #594b4270')} 
           onClick={pinWindow}
         >
-          <div i-fluent:pin-48-filled text-14px c-white></div>
+          <div i-fluent:pin-48-filled text-14px c={pin.value ? 'white' : (isLight.value ? '#555' : 'white')}></div>
         </div>
         <div flex>
           <div 
@@ -45,7 +45,7 @@ export default defineComponent({
             border="1px solid #594b4230"
             onClick={() => appWindow.minimize()}
           >
-            <div i-mdi:minus-thick c={isLight.value ? '#333' : 'white'} text-14px></div>
+            <div i-mdi:minus-thick c={isLight.value ? '#555' : 'white'} text-14px></div>
           </div>
           <div 
             bg="error-d hover:error-h active:error-a" 
