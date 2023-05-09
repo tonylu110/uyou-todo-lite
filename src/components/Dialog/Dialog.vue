@@ -10,7 +10,6 @@
       <div class="cancel" v-if="cancelButtonShow" @click="emits('cancel')">cancel</div>
       <div class="return" :style="{width: cancelButtonShow ? '' : '100%'}" @click="emits('return')">return</div>
     </div>
-    <ContextMenu :pos="contextMenu" v-if="showContextMenu" :show-paste="false"/>
   </dialog>
 </template>
 
@@ -46,29 +45,6 @@ onMounted(() => {
     } else {
       dialog.value.addEventListener('animationend', closeAlert)
     }
-  })
-})
-
-const showContextMenu = ref(false)
-const contextMenu = ref({
-  top: 0,
-  left: 0
-})
-
-onMounted(() => {
-  dialog.value.addEventListener('contextmenu', e => {
-    e.preventDefault()
-
-    showContextMenu.value = true
-
-    contextMenu.value = {
-      top: e.pageY,
-      left: e.pageX
-    }
-  })
-
-  document.addEventListener('click', () => {
-    showContextMenu.value = false
   })
 })
 </script>
