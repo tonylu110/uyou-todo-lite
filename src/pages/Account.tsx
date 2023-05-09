@@ -1,4 +1,5 @@
 import { defineComponent, reactive, ref } from "vue";
+import Dialog from "../components/Dialog/Dialog.vue"
 import TabBar from "../components/TabBar";
 import SettingList from "../components/SettingList";
 import Item from "../components/SettingList/ItemBox/Item/Item.vue";
@@ -15,6 +16,13 @@ export default defineComponent({
       uname: '',
       passwd: ''
     })
+
+    const dialogShow = ref(false)
+    const dialogMsg = ref('msg')
+
+    const login = () => {
+      dialogShow.value = true
+    }
 
     return () => (
       <>
@@ -53,7 +61,10 @@ export default defineComponent({
               />
             </div>
           )}
-          {isLogin.value ? null : <ItemButton mode="primary">Login</ItemButton>}
+          {isLogin.value ? null : <ItemButton mode="primary" onClick={login}>Login</ItemButton>}
+          <Dialog dialogShow={dialogShow.value} onCancel={() => dialogShow.value = !dialogShow.value}>
+            <span>{dialogMsg.value}</span>
+          </Dialog>
         </SettingList>
       </>
     )

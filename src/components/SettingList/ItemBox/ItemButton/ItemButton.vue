@@ -1,5 +1,5 @@
 <template>
-  <div :class="'item-button ' + mode">
+  <div :class="'item-button ' + mode" @click="emits('click')">
     <slot>button</slot>
   </div>
 </template>
@@ -7,6 +7,10 @@
 <script setup lang="ts">
 defineProps<{
   mode: string
+}>()
+
+const emits = defineEmits<{
+  (e: 'click') :void
 }>()
 </script>
 
