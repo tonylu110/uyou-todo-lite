@@ -3,18 +3,21 @@
     <div class="title" data-tauri-drag-region>
       {{ title }}
     </div>
-    <div class="body" :style="{alignItems: title === 'Hit' ? 'center' : ''}">
+    <div class="body" :style="{alignItems: title === t('dialog.hit') ? 'center' : ''}">
       <slot/>
     </div>
-    <div class="buttons" no-drag>
-      <div class="cancel" v-if="cancelButtonShow" @click="emits('cancel')">cancel</div>
-      <div class="return" :style="{width: cancelButtonShow ? '' : '100%'}" @click="emits('return')">return</div>
+    <div class="buttons">
+      <div class="cancel" v-if="cancelButtonShow" @click="emits('cancel')">{{ t('dialog.cancel') }}</div>
+      <div class="return" :style="{width: cancelButtonShow ? '' : '100%'}" @click="emits('return')">{{ t('dialog.return') }}</div>
     </div>
   </dialog>
 </template>
 
 <script setup lang="ts">
 import {onMounted, Ref, ref, watchEffect} from "vue"
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n()
 
 const props = withDefaults(defineProps<{
   title?: string

@@ -6,9 +6,11 @@ import Item from "../components/SettingList/ItemBox/Item/Item.vue";
 import ItemButton from "../components/SettingList/ItemBox/ItemButton/ItemButton.vue";
 import { useRouter } from "vue-router";
 import { createToast } from "../components/Toast";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   setup() {
+    const { t } = useI18n()
     const router = useRouter()
 
     const SettingListRef = ref()
@@ -21,11 +23,11 @@ export default defineComponent({
     })
 
     const dialogShow = ref(false)
-    const dialogMsg = ref('msg')
+    const dialogMsg = ref('')
 
     const login = () => {
       if (fromData.uname === '' || fromData.passwd === '') {
-        dialogMsg.value = 'please input account and password'
+        dialogMsg.value = t('accountPage.plzInAccAndPass')
         dialogShow.value = true
       } else {
         isLogout.value = false
@@ -46,7 +48,7 @@ export default defineComponent({
             localStorage.setItem('uname', fromData.uname)
             localStorage.setItem('uid', res._id)
             createToast(SettingListRef.value.$el, {
-              msg: 'syncing todo data'
+              msg: t('accountPage.syncing')
             })
             fetch(`https://api.todo.uyou.org.cn/todoexist?uid=${res._id}`).then(res => {
               return res.json()
@@ -68,11 +70,11 @@ export default defineComponent({
                 }).then(res => {
                   if (res.code === 200) {
                     createToast(SettingListRef.value.$el, {
-                      msg: 'sync todo data success'
+                      msg: t('accountPage.syncSuccess')
                     })
                   } else {
                     createToast(SettingListRef.value.$el, {
-                      msg: 'sync todo data error'
+                      msg: t('accountPage.syncError')
                     })
                   }
                 })
@@ -91,19 +93,19 @@ export default defineComponent({
                 }).then(res => {
                   if (res._id) {
                     createToast(SettingListRef.value.$el, {
-                      msg: 'sync todo data success'
+                      msg: t('accountPage.syncSuccess')
                     })
                     localStorage.setItem('ToDo', res.data)
                   } else {
                     createToast(SettingListRef.value.$el, {
-                      msg: 'sync todo data fail'
+                      msg: t('accountPage.syncFail')
                     })
                   }
                 })
               }
             })
           } else {
-            dialogMsg.value = 'login error'
+            dialogMsg.value = t('accountPage.loginError')
             dialogShow.value = true
           }
         })
@@ -114,7 +116,7 @@ export default defineComponent({
     const logout = () => {
       isLogout.value = true
       dialogShow.value = true
-      dialogMsg.value = 'Are you want to log out?'
+      dialogMsg.value = t('accountPage.logoutWindow')
     }
 
     const returnFn = () => {
@@ -136,13 +138,13 @@ export default defineComponent({
       <>
         <TabBar
           showLeftImg={true}
-          title="Account"
+          title={t('accountPage.account')}
           onLeftFn={() => router.back()}
           bgColor="light"
         />
         <SettingList ref={SettingListRef}>
           <Item
-            title={isLogin.value ? isLogin.value : 'Not Login'}
+            title={isLogin.value ? isLogin.value : t('settingsPage.notLogin')}
             showArrow={false}
           />
           {isLogin.value ? null : (
@@ -156,7 +158,7 @@ export default defineComponent({
                 border="1.5px solid #00000020"
                 bg="#00000010" rounded-5px outline-primary-d
                 type="text" 
-                placeholder="please input account" 
+                placeholder={t('accountPage.plzInputAcc')}
                 v-model={fromData.uname}
               />
               <input 
@@ -164,15 +166,15 @@ export default defineComponent({
                 border="1.5px solid #00000020"
                 bg="#00000010" rounded-5px outline-primary-d
                 type="password" 
-                placeholder="please input password" 
+                placeholder={t('accountPage.plzInputPass')} 
                 v-model={fromData.passwd}
               />
             </div>
           )}
-          {isLogin.value ? null : <ItemButton mode="primary" onClick={login}>Log in</ItemButton>}
-          {isLogin.value ? <ItemButton mode="error" onClick={logout}>Log out</ItemButton> : null}
-          <Dialog dialogShow={dialogShow.value} onReturn={returnFn} onCancel={() => dialogShow.value = !dialogShow.value}>
-            <span>{dialogMsg.value}</span>
+          {isLogin.value ? null : <ItemButton mode="primary" onClick={login}>{t('accountPage.login')}</ItemButton>}
+          {isLogin.value ? <ItemButton mode="error" onClick={logout}>{t('accountPage.logout')}</ItemButton> : null}
+          <Dialog title={t('accountPage.hit')} dialogShow={dialogShow.value} onReturn={returnFn} onCancel={() => dialogShow.value = !dialogShow.value}>
+            {dialogMsg.value}
           </Dialog>
         </SettingList>
       </>

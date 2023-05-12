@@ -1,0 +1,27 @@
+{
+  "settingsPage": {
+    "settings": "Settings",
+    "myAcc": "My Account",
+    "notLogin": "Not Log in"
+  },
+  "accountPage": {
+    "account": "Account",
+    "login": "Log in",
+    "logout": "Log out",
+    "plzInputAcc": "please input account",
+    "plzInputPass": "please input password",
+    "plzInAccAndPass": "please input account and password",
+    "syncing": "syncing todo data",
+    "syncSuccess": "sync todo data success",
+    "syncError": "sync todo data error",
+    "syncFail": "sync todo data fail",
+    "loginError": "login error",
+    "logoutWindow": "Are you want to log out?",
+    "hit": "Hit"
+  },
+  "dialog": {
+    "cancel": "Cancel",
+    "return": "Return",
+    "hit": "Hit"
+  }
+}
