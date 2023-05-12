@@ -9,12 +9,17 @@ const routes = [
   {
     path: '/settings',
     name: 'settings',
-    component: () => import('./pages/Setting')
+    component: () => import('./pages/Settings')
   },
   {
     path: '/account',
     name: 'account',
     component: () => import('./pages/Account')
+  },
+  {
+    path: '/lang',
+    name: 'lang',
+    component: () => import('./pages/Settings/Lang')
   }
 ]
 

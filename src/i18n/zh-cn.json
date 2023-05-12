@@ -23,5 +23,9 @@
     "cancel": "取消",
     "return": "确定",
     "hit": "提示"
+  },
+  "langPage": {
+    "lang": "语言",
+    "withSys": "跟随系统"
   }
 }

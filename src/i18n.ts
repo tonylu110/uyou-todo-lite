@@ -3,13 +3,16 @@ import zhCN from './i18n/zh-cn.json'
 import en from './i18n/en.json'
 
 const messages = {
-  'zh-CN': zhCN,
+  'zh-cn': zhCN,
   en
 }
 
+const localLang = localStorage.getItem('lang')
+const isAuto = localLang === 'withSystem' || localLang === null
+
 const i18n = createI18n({
   legacy: false,
-  locale: navigator.language,
+  locale: isAuto ? navigator.language.toLowerCase() : localLang,
   fallbackLocale: 'en',
   messages
 })

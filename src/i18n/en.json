@@ -23,5 +23,9 @@
     "cancel": "Cancel",
     "return": "Return",
     "hit": "Hit"
+  },
+  "langPage": {
+    "lang": "Languages",
+    "withSys": "Auto"
   }
 }

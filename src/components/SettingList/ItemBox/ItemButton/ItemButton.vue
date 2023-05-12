@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 defineProps<{
-  mode: string
+  mode?: string
 }>()
 
 const emits = defineEmits<{
@@ -50,7 +50,7 @@ const emits = defineEmits<{
 .item-button.error:active {
   background-color: #c95047;
 }
-.item-button:deep(.lang-img) {
+.item-button:deep(img) {
   max-height: 50px;
 }
 </style>

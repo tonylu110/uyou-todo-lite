@@ -52,7 +52,7 @@ export default defineComponent({
         >
           <div className={props.leftImg} c={isLight.value ? '#333' : 'white'} text-20px></div>
         </div>) : null}
-        <div c={isLight.value ? '#333' : 'white'}>{props.title}</div>
+        <div font-bold c={isLight.value ? '#333' : 'white'}>{props.title}</div>
         {props.showRightImg ? 
         <div 
           absolute right-10px
