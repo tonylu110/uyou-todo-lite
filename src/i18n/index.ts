@@ -1,6 +1,6 @@
 import { createI18n } from 'vue-i18n'
-import zhCN from './i18n/zh-cn.json'
-import en from './i18n/en.json'
+import zhCN from './zh-cn.json'
+import en from './en.json'
 
 const messages = {
   'zh-cn': zhCN,

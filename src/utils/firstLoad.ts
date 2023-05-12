@@ -1,25 +1,28 @@
+import { useI18n } from "vue-i18n";
 import LocalStorage from "./localStorage";
 
 const firstLoad = () => {
+  const { t } = useI18n()
+
   const firstToDo = {
     data: [
       {
-        text: 'Welcome to use uyou ToDo',
+        text: t('firstList[0]'),
         id: new Date().getTime(),
         ok: false
       },
       {
-        text: 'Move the mouse to the left of the ToDo item to complete the ToDo',
+        text: t('firstList[1]'),
         id: new Date().getTime() + 1,
         ok: false
       },
       {
-        text: 'Move the mouse to the right of the ToDo item to delete the ToDo',
+        text: t('firstList[2]'),
         id: new Date().getTime() + 3,
         ok: false
       },
       {
-        text: 'Move the mouse to the top right corner of the ToDo title bar to copy the ToDo content',
+        text: t('firstList[3]'),
         id: new Date().getTime() + 4,
         ok: false
       }
