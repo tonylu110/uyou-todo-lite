@@ -2,9 +2,9 @@ import { Ref, defineComponent, onBeforeUnmount, ref } from "vue";
 import List from "../List"
 import Item from "./Item/Item.vue";
 import ITodoList from "../../interface/ITodoListArray";
-import LocalStorage from "../../utils/localStorage";
 import AddItem from "./AddItem";
 import emitter from "../../utils/emitter";
+import saveItemSet from "./Item/saveItemSet";
 
 export default defineComponent({
   props: {
@@ -17,18 +17,14 @@ export default defineComponent({
         if (list.value[index].id === id)
           list.value[index].ok = okState
       })
-      LocalStorage('set', {
-        data: list.value
-      })
+      saveItemSet(list.value)
     }
     const del = (id: number) => {
       list.value.forEach((_item, index) => {
         if (list.value[index].id === id)
           list.value.splice(index, 1)
       })
-      LocalStorage('set', {
-        data: list.value
-      })
+      saveItemSet(list.value)
     }
 
     const showAddItem = ref(false)
@@ -43,9 +39,7 @@ export default defineComponent({
         text: text,
         ok: false
       })
-      LocalStorage('set', {
-        data: list.value
-      })
+      saveItemSet(list.value)
     }
 
     return () => (

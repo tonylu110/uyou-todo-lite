@@ -4,7 +4,7 @@ import en from './en.json'
 
 const messages = {
   'zh-cn': zhCN,
-  en
+  'en-us': en
 }
 
 const localLang = localStorage.getItem('lang')
@@ -13,7 +13,7 @@ const isAuto = localLang === 'withSystem' || localLang === null
 const i18n = createI18n({
   legacy: false,
   locale: isAuto ? navigator.language.toLowerCase() : localLang,
-  fallbackLocale: 'en',
+  fallbackLocale: 'en-us',
   messages
 })
 
