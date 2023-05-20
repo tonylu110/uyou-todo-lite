@@ -36,12 +36,12 @@ export default defineComponent({
           />
           <ItemBox>
             <Item 
-              title="auto update" 
+              title={t('updatePage.autoUpdate')}
               showSwitch={true} 
               switchState={autoUpdate.value}
               onSwitchFun={setAutoUpdate}
             />
-            <Item title="application update" onItemFun={() => router.push('/update')}/>
+            <Item title={t('updatePage.toUpdate')} onItemFun={() => router.push('/update')}/>
           </ItemBox>
           <ItemButton
             onClick={() => router.push('/lang')}

@@ -5,6 +5,9 @@ import emitter from './utils/emitter';
 import Dialog from './components/Dialog/Dialog.vue';
 import { versionCode } from './utils/appVersion';
 import { open } from '@tauri-apps/api/shell';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n()
 
 const bgColor = ref('')
 
@@ -22,7 +25,7 @@ onMounted(() => {
       return res.json()
     }).then(res => {
       if (res[2].code > versionCode) {
-        newVersion.value = `new version: v${res[2].version}`
+        newVersion.value = `${t('updatePage.newVersion')}: v${res[2].version}`
         updateMsg.value = res[2].data
         dialogShow.value = true
       }

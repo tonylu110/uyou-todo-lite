@@ -8,17 +8,19 @@ import logo from '../../assets/images/icon.png'
 import ItemButton from "../../components/SettingList/ItemBox/ItemButton/ItemButton.vue";
 import { versionCode } from "../../utils/appVersion";
 import { createToast } from "../../components/Toast";
+import { useI18n } from "vue-i18n";
 
 const appVersion = await getVersion();
 
 export default defineComponent({
   setup() {
+    const { t } = useI18n()
     const router = useRouter()
     const listRef = ref()
 
     const newVersion = ref('')
     const updateMsg: Ref<string[]> = ref([])
-    const updateButtonText = ref('checking update')
+    const updateButtonText = ref(t('updatePage.checkingUpdate'))
 
     const getUpdate = () => {
       setTimeout(() => {
@@ -26,12 +28,12 @@ export default defineComponent({
           return res.json()
         }).then(res => {
           if (res[2].code > versionCode) {
-            newVersion.value = `new version: v${res[2].version}`
+            newVersion.value = `${t('updatePage.newVersion')}: v${res[2].version}`
             updateMsg.value = res[2].data
-            updateButtonText.value = 'goto update'
+            updateButtonText.value = t('updatePage.gotoUpdate')
           } else {
-            newVersion.value = 'don\'t have update'
-            updateButtonText.value = 'check update'
+            newVersion.value = t('updatePage.noUpdate')
+            updateButtonText.value = t('updatePage.checkUpdate')
             createToast({msg: newVersion.value})
           }
         })
@@ -40,7 +42,7 @@ export default defineComponent({
 
     const updateButtonCilck = () => {
       if (updateMsg.value.length === 0) {
-        updateButtonText.value = 'checking update'
+        updateButtonText.value = t('updatePage.checkingUpdate')
         newVersion.value = ''
         getUpdate()
       } else {
@@ -56,7 +58,7 @@ export default defineComponent({
       <>
         <TabBar
           showLeftImg={true}
-          title="Update"
+          title={t('updatePage.update')}
           onLeftFn={() => router.back()}
           bgColor="light"
         />
@@ -87,7 +89,7 @@ export default defineComponent({
                 p="y-5px x-15px"
               >
                 <span c-black text-16px font-bold mt-10px>
-                  Update change log
+                  {t('updatePage.changelog')}
                 </span>
                 <ul w="100%">
                   {updateMsg.value.map((item, index) => {

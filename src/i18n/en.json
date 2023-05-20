@@ -33,5 +33,16 @@
     "Move the mouse to the left of the ToDo item to complete the ToDo",
     "Move the mouse to the right of the ToDo item to delete the ToDo",
     "Move the mouse to the top right corner of the ToDo title bar to copy the ToDo content"
-  ]
+  ],
+  "updatePage": {
+    "update": "Update",
+    "autoUpdate": "Auto Update",
+    "toUpdate": "Application Update",
+    "checkingUpdate": "Checking Update...",
+    "newVersion": "new version",
+    "gotoUpdate": "Goto Update",
+    "noUpdate": "Don't have any update",
+    "checkUpdate": "Check Update",
+    "changelog": "Update Change Log"
+  }
 }
