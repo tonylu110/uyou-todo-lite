@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router"
 import { useI18n } from "vue-i18n";
 import TabBar from "../../components/TabBar";
@@ -15,6 +15,12 @@ export default defineComponent({
 
     const isLogin = localStorage.getItem('uid')
 
+    const autoUpdate = ref(localStorage.getItem('autoUpdate') === 'true' || !localStorage.getItem('autoUpdate'))
+    const setAutoUpdate = () => {
+      autoUpdate.value = !autoUpdate.value
+      localStorage.setItem('autoUpdate', autoUpdate.value + '')
+    }
+
     return () => (
       <>
         <TabBar
@@ -28,6 +34,15 @@ export default defineComponent({
             title={isLogin ? t('settingsPage.myAcc') : t('settingsPage.notLogin')}
             onItemFun={() => router.push('/account')}
           />
+          <ItemBox>
+            <Item 
+              title="auto update" 
+              showSwitch={true} 
+              switchState={autoUpdate.value}
+              onSwitchFun={setAutoUpdate}
+            />
+            <Item title="application update" onItemFun={() => router.push('/update')}/>
+          </ItemBox>
           <ItemButton
             onClick={() => router.push('/lang')}
           >

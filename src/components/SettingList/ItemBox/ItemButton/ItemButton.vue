@@ -1,12 +1,17 @@
 <template>
-  <div :class="'item-button ' + mode" @click="emits('click')">
+  <div 
+    :class="`item-button ${mode} ${bottom ? 'bottom-0 !fixed !w-[calc(100%-50px)]' : ''}`" 
+    @click="emits('click')"
+  >
     <slot>button</slot>
   </div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
-  mode?: string
+  mode?: string,
+  fixed?: boolean,
+  bottom?: boolean
 }>()
 
 const emits = defineEmits<{

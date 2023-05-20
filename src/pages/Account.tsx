@@ -13,8 +13,6 @@ export default defineComponent({
     const { t } = useI18n()
     const router = useRouter()
 
-    const SettingListRef = ref()
-
     const isLogin = ref(localStorage.getItem('uname'))
 
     const fromData = reactive({
@@ -47,7 +45,7 @@ export default defineComponent({
             isLogin.value = fromData.uname
             localStorage.setItem('uname', fromData.uname)
             localStorage.setItem('uid', res._id)
-            createToast(SettingListRef.value.$el, {
+            createToast({
               msg: t('accountPage.syncing')
             })
             fetch(`https://api.todo.uyou.org.cn/todoexist?uid=${res._id}`).then(res => {
@@ -69,11 +67,11 @@ export default defineComponent({
                   return res.json()
                 }).then(res => {
                   if (res.code === 200) {
-                    createToast(SettingListRef.value.$el, {
+                    createToast({
                       msg: t('accountPage.syncSuccess')
                     })
                   } else {
-                    createToast(SettingListRef.value.$el, {
+                    createToast({
                       msg: t('accountPage.syncError')
                     })
                   }
@@ -92,12 +90,12 @@ export default defineComponent({
                   return res.json()
                 }).then(res => {
                   if (res._id) {
-                    createToast(SettingListRef.value.$el, {
+                    createToast({
                       msg: t('accountPage.syncSuccess')
                     })
                     localStorage.setItem('ToDo', res.data)
                   } else {
-                    createToast(SettingListRef.value.$el, {
+                    createToast({
                       msg: t('accountPage.syncFail')
                     })
                   }
@@ -142,7 +140,7 @@ export default defineComponent({
           onLeftFn={() => router.back()}
           bgColor="light"
         />
-        <SettingList ref={SettingListRef}>
+        <SettingList>
           <Item
             title={isLogin.value ? isLogin.value : t('settingsPage.notLogin')}
             showArrow={false}

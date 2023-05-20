@@ -5,7 +5,7 @@ interface IProps {
   center?: boolean
 }
 
-export const createToast = (node: Element, { msg, center }: IProps) => {
+export const createToast = ({ msg, center }: IProps, node?: Element) => {
   const vm = createVNode(defineComponent({
     props: {
       msg: {
@@ -16,7 +16,7 @@ export const createToast = (node: Element, { msg, center }: IProps) => {
     setup(props: IProps) {
       return () => (
         <div
-          p-7px
+          p-7px z-10000
           rounded-5px
           font-bold
           c="#996b3d" bg="#fff6dc" shadow="sm black/30"
@@ -36,9 +36,11 @@ export const createToast = (node: Element, { msg, center }: IProps) => {
   const container = document.createElement('div')
   render(vm, container)
 
-  node.append(container)
+  let domNode = node ? node : document.body
+
+  domNode?.append(container)
   setTimeout(() => {
-    node.removeChild(container)
+    domNode?.removeChild(container)
   }, 1000)
 
   return vm

@@ -21,6 +21,12 @@ const routes = [
     name: 'lang',
     component: () => import('./pages/Settings/Lang')
   }
+  ,
+  {
+    path: '/update',
+    name: 'update',
+    component: () => import('./pages/Settings/Update')
+  }
 ]
 
 const router = createRouter({

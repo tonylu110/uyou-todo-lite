@@ -35,10 +35,10 @@ const deleteItem = () => {
 const itemDom = ref(null) as unknown as Ref<Element>
 const menu = () => {
   navigator.clipboard.writeText(props.text).then(() => {
-    createToast(itemDom.value, {
+    createToast({
       msg: 'copy success',
       center: true
-    })
+    }, itemDom.value)
   })
 }
 </script>

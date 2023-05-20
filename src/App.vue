@@ -1,12 +1,33 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, Ref, onMounted } from 'vue';
 import TitleBar from './components/TitleBar'
 import emitter from './utils/emitter';
+import Dialog from './components/Dialog/Dialog.vue';
+import { versionCode } from './utils/appVersion';
+import { open } from '@tauri-apps/api/shell';
 
 const bgColor = ref('')
 
 emitter.on('bgColor', (data) => {
   bgColor.value = (data as unknown as string)
+})
+
+const newVersion = ref('')
+const updateMsg: Ref<string[]> = ref([])
+const dialogShow = ref(false)
+const autoUpdate = localStorage.getItem('autoUpdate') === 'true' || !localStorage.getItem('autoUpdate')
+onMounted(() => {
+  if (autoUpdate) {
+    fetch('https://api.todo.uyou.org.cn/update/get').then(res => {
+      return res.json()
+    }).then(res => {
+      if (res[2].code > versionCode) {
+        newVersion.value = `new version: v${res[2].version}`
+        updateMsg.value = res[2].data
+        dialogShow.value = true
+      }
+    })
+  }
 })
 </script>
 
@@ -14,5 +35,10 @@ emitter.on('bgColor', (data) => {
   <div :class="bgColor" h-screen w-screen>
     <title-bar></title-bar>
     <router-view></router-view>
+    <Dialog :title="newVersion" :dialog-show="dialogShow" @cancel="dialogShow = false" @return="open('https://github.com/tonylu110/uyou-todo-lite/releases')">
+      <ul>
+        <li v-for="(item, index) in updateMsg" :key="index">{{ item.slice(2) }}</li>
+      </ul>
+    </Dialog>
   </div>
 </template>
