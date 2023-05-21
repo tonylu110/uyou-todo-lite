@@ -2,7 +2,9 @@
   "settingsPage": {
     "settings": "Settings",
     "myAcc": "My Account",
-    "notLogin": "Not Log in"
+    "notLogin": "Not Log in",
+    "clearData": "Clear Data",
+    "clearDataTrue": "Do you want to clear data?"
   },
   "accountPage": {
     "account": "Account",

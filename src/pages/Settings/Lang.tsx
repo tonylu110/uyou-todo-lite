@@ -66,7 +66,7 @@ export default defineComponent({
                 c="#333 active:white"
                 onClick={() => menuClick('zh-cn')}
               >
-                <span>中文简体</span>
+                <span>中文（简体）</span>
                 {langShow('zh-cn') ? <div i-mdi:check text-24px c-primary-d></div> : null}
               </div>
             </div>

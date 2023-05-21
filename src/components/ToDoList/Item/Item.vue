@@ -107,9 +107,9 @@ const menu = () => {
 
 <style scoped>
 .ok:hover ~ .item {
-  transform: translateX(60px);
+  --uno: translate-x-60px;
 }
 .del:hover ~ .item {
-  transform: translateX(-60px);
+  --uno: translate-x--60px;
 }
 </style>

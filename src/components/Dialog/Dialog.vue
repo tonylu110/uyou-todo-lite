@@ -56,86 +56,46 @@ onMounted(() => {
 @import "dialogAnimation.css";
 
 .alert {
-  padding: 0;
-  z-index: 10;
-  background-color: white;
-  width: 300px;
-  border-radius: 9px;
-  box-shadow: 0 5px 20px #00000050;
-  border: 1px solid #999;
-  overflow: hidden;
-  transition: dialog;
-  user-select: none;
-  color: #00000090;
-  outline: none;
+  --uno: p-0 z-10 bg-white w-300px rounded-9px shadow-md shadow-black/5 border-1px border-solid border-black/20 overflow-hidden select-none outline-none c-black/65;
 }
-
 .alert .title {
-  border-bottom: 1.5px solid #00000015;
-  padding: 12px;
-  display: flex;
-  background: #00000008;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
+  --uno: border-b-1.5px border-b-solid border-b-black/10 p-12px flex justify-center items-center bg-black/5;
 }
 .alert .body {
-  padding: 18px;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1.5px solid #00000015;
-  min-height: 3em;
-  justify-content: center;
+  --uno: p-18px text-14px flex flex-col border-b-1.5px border-b-solid border-b-black/10 min-h-12 justify-center;
 }
 .alert .body:deep(ul) {
-  margin: 0;
+  --uno: m-0;
 }
 .alert .body:deep(ul) li {
-  margin-left: -18px;
-  user-select: text;
+  --uno: ml--18px select-text;
 }
 .alert .body :deep(span) {
-  display: block;
-  white-space: pre-wrap;
-  user-select: text;
-  text-align: center;
+  --uno: block whitespace-pre-wrap select-text text-center;
 }
 
 .alert .buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 50px;
-  background: #00000010;
+  --uno: flex items-center h-50px bg-black/8;
 }
 .alert .buttons div {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
+  --uno: w-50% h-100% flex justify-center items-center text-15px font-bold cursor-pointer;
 }
 .alert .buttons .cancel {
-  border-right: 2px solid #00000010;
+  --uno: border-r-2px border-r-solid border-black/8;
 }
 .alert .buttons .cancel:active {
-  background-color: #00000010 !important;
+  --uno: \!bg-black/8;
 }
-.alert .button .cancel:hover {
-  background-color: #00000005;
+.alert .buttons .cancel:hover {
+  --uno: \!bg-black/4
 }
 .alert .buttons .return {
-  color: #5985eb;
+  --uno: c-#5985eb;
 }
 .alert .buttons .return:active {
-  background-color: #5985eb !important;
-  color: white;
+  --uno: \!bg-#5985eb c-white;
 }
-.alert .button .return:hover {
-  background-color: #00000005;
+.alert .buttons .return:hover {
+  --uno: bg-black/4;
 }
 </style>

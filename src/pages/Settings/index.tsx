@@ -7,6 +7,7 @@ import Item from "../../components/SettingList/ItemBox/Item/Item.vue";
 import langImg from "../../assets/images/lang.png";
 import ItemBox from "../../components/SettingList/ItemBox/ItemBox.vue";
 import ItemButton from "../../components/SettingList/ItemBox/ItemButton/ItemButton.vue";
+import Dialog from "../../components/Dialog/Dialog.vue";
 
 export default defineComponent({
   setup() {
@@ -21,6 +22,7 @@ export default defineComponent({
       localStorage.setItem('autoUpdate', autoUpdate.value + '')
     }
 
+    const dialogShow = ref(false)
     const clearData = () => {
       localStorage.clear()
       location.reload()
@@ -48,12 +50,20 @@ export default defineComponent({
             />
             <Item title={t('updatePage.toUpdate')} onItemFun={() => router.push('/update')}/>
           </ItemBox>
-          <ItemButton mode="error" onClick={clearData}>clear Data</ItemButton>
+          <ItemButton mode="error" onClick={() => dialogShow.value = true}>{t('settingsPage.clearData')}</ItemButton>
           <ItemButton
             onClick={() => router.push('/lang')}
           >
             <img src={langImg} alt="" />
           </ItemButton>
+          <Dialog 
+            title={t('accountPage.hit')}
+            dialogShow={dialogShow.value} 
+            onReturn={clearData} 
+            onCancel={() => dialogShow.value = false}
+          >
+            {t('settingsPage.clearDataTrue')}
+          </Dialog>
         </SettingList>
       </>
     )

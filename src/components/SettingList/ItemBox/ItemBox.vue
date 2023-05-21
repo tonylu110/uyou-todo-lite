@@ -11,13 +11,9 @@
 
 <style scoped>
 .box:deep(.item) {
-  box-shadow: none;
-  margin-bottom: 0;
-  border-radius: 0;
-  border-bottom: 1px solid #00000015;
-  width: calc(100% - 30px) !important;
+  --uno: shadow-none mb-0 rounded-0 border-b-1px border-b-solid border-b-black/10 w-[calc(100%-30px)];
 }
 .box:deep(.item):last-child {
-  border: 0;
+  --uno: border-0;
 }
 </style>

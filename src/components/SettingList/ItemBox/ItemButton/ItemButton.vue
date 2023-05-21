@@ -21,41 +21,24 @@ const emits = defineEmits<{
 
 <style scoped>
 .item-button {
-  position: relative;
-  width: calc(100% - 30px);
-  height: 30px;
-  min-height: 30px;
-  padding: 10px 15px;
-  border-radius: 7px;
-  box-shadow: 0 2px 10px #00000030;
-  background-color: white;
-  cursor: pointer;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #333;
-  font-weight: bold;
+  --uno: relative w-[calc(100%-30px)] h-30px min-h-30px p-x-15px p-y-10px rounded-7px shadow-item bg-white cursor-pointer mb-10px flex items-center justify-center c-#333 font-bold;
 }
 .item-button:active {
-  background-color: #5985eb;
-  color: white;
+  --uno: bg-#5985eb c-white;
 }
 .item-button.primary {
-  background-color: #5985eb;
-  color: white;
+  --uno: bg-#5985eb c-white;
 }
 .item-button.primary:active {
-  background-color: #4e6fbb;
+  --uno: bg-#4e6fbb;
 }
 .item-button.error {
-  background-color: #e5544b;
-  color: white;
+  --uno: bg-#e5544b c-white;
 }
 .item-button.error:active {
-  background-color: #c95047;
+  --uno: bg-#c95047;
 }
 .item-button:deep(img) {
-  max-height: 50px;
+  --uno: max-h-50px;
 }
 </style>

@@ -2,7 +2,9 @@
   "settingsPage": {
     "settings": "设置",
     "myAcc": "我的账号",
-    "notLogin": "未登录"
+    "notLogin": "未登录",
+    "clearData": "清除数据",
+    "clearDataTrue": "是否清除数据？"
   },
   "accountPage": {
     "account": "账号",
