@@ -21,7 +21,7 @@ export default defineComponent({
     return () => (
       <div 
         data-tauri-drag-region
-        w-screen h-40px backdrop-blur-7px
+        w-screen h-40px backdrop-blur-5px
         flex items-center justify-between
         bg={isLight.value ? 'white/50' : '#7a695cdd'} sticky top-0 z-1
         border-b="1px solid #594b4230"
@@ -31,7 +31,7 @@ export default defineComponent({
           w-50px h-20px
           flex items-center justify-center
           ml-9px cursor-pointer rounded-5px
-          border={pin.value ? '1px solid error-d hover:error-h active:error-a' : (isLight.value ? '1px solid #594b4230' : '1px solid #594b4270')} 
+          border={pin.value ? '1px solid error-d hover:error-h active:error-a' : (isLight.value ? '1px solid #594b4230' : '1px solid #594b4230')} 
           onClick={pinWindow}
         >
           <div i-fluent:pin-48-filled text-14px c={pin.value ? 'white' : (isLight.value ? '#555' : 'white')}></div>

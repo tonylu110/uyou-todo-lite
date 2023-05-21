@@ -21,6 +21,11 @@ export default defineComponent({
       localStorage.setItem('autoUpdate', autoUpdate.value + '')
     }
 
+    const clearData = () => {
+      localStorage.clear()
+      location.reload()
+    }
+
     return () => (
       <>
         <TabBar
@@ -43,6 +48,7 @@ export default defineComponent({
             />
             <Item title={t('updatePage.toUpdate')} onItemFun={() => router.push('/update')}/>
           </ItemBox>
+          <ItemButton mode="error" onClick={clearData}>clear Data</ItemButton>
           <ItemButton
             onClick={() => router.push('/lang')}
           >

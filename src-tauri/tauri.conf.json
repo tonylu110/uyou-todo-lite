@@ -27,7 +27,8 @@
         "unmaximize": true,
         "unminimize": true,
         "startDragging": true,
-        "setAlwaysOnTop": true
+        "setAlwaysOnTop": true,
+        "center": true
       }
     },
     "bundle": {
@@ -70,6 +71,7 @@
         "minHeight": 600,
         "minWidth": 350,
         "maxWidth": 400,
+        "center": true,
         "decorations": false
       }
     ]

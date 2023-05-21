@@ -35,7 +35,7 @@ export default defineComponent({
 
     return () => (
       <div 
-        backdrop-blur-7px
+        backdrop-blur-5px
         bg={isLight.value ? 'white/50' : '#7a695cdd'} sticky top-41px
         h-50px w-screen z-1
         flex justify-center items-center
