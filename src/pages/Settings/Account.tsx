@@ -1,11 +1,11 @@
 import { defineComponent, reactive, ref } from "vue";
 import Dialog from "../components/Dialog/Dialog.vue"
-import TabBar from "../components/TabBar";
-import SettingList from "../components/SettingList";
+import TabBar from "../../components/TabBar";
+import SettingList from "../../components/SettingList";
 import Item from "../components/SettingList/ItemBox/Item/Item.vue";
 import ItemButton from "../components/SettingList/ItemBox/ItemButton/ItemButton.vue";
 import { useRouter } from "vue-router";
-import { createToast } from "../components/Toast";
+import { createToast } from "../../components/Toast";
 import { useI18n } from "vue-i18n";
 
 export default defineComponent({

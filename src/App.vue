@@ -6,6 +6,8 @@ import Dialog from './components/Dialog/Dialog.vue';
 import { versionCode } from './utils/appVersion';
 import { open } from '@tauri-apps/api/shell';
 import { useI18n } from 'vue-i18n';
+import { isLogin, uid } from './utils/getUser';
+import LocalStorage from './utils/localStorage';
 
 const { t } = useI18n()
 
@@ -31,6 +33,22 @@ onMounted(() => {
       }
     })
   }
+  if (isLogin) {
+    fetch('https://api.todo.uyou.org.cn/gettodo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        uid: uid
+      })
+    }).then(res => {
+      return res.json()
+    }).then(res => {
+      localStorage.setItem('ToDo', res.data)
+      emitter.emit('todoData', LocalStorage('get'))
+    })
+  }
 })
 </script>
 
@@ -38,7 +56,12 @@ onMounted(() => {
   <div :class="bgColor" h-screen w-screen>
     <title-bar></title-bar>
     <router-view></router-view>
-    <Dialog :title="newVersion" :dialog-show="dialogShow" @cancel="dialogShow = false" @return="open('https://github.com/tonylu110/uyou-todo-lite/releases')">
+    <Dialog 
+      :title="newVersion" 
+      :dialog-show="dialogShow" 
+      @cancel="dialogShow = false" 
+      @return="open('https://github.com/tonylu110/uyou-todo-lite/releases')"
+    >
       <ul>
         <li v-for="(item, index) in updateMsg" :key="index">{{ item.slice(2) }}</li>
       </ul>

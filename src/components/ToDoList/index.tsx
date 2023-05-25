@@ -1,4 +1,4 @@
-import { Ref, defineComponent, onBeforeUnmount, ref } from "vue";
+import { Ref, defineComponent, onBeforeUnmount, onMounted, ref } from "vue";
 import List from "../List"
 import Item from "./Item/Item.vue";
 import ITodoList from "../../interface/ITodoListArray";
@@ -41,6 +41,12 @@ export default defineComponent({
       })
       saveItemSet(list.value)
     }
+
+    onMounted(() => {
+      emitter.on('todoData', (data: unknown) => {
+        list.value = data as ITodoList[]
+      })
+    })
 
     return () => (
       <List bgColor="bg-#edd9b7">

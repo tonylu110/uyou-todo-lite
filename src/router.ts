@@ -14,7 +14,7 @@ const routes = [
   {
     path: '/account',
     name: 'account',
-    component: () => import('./pages/Account')
+    component: () => import('./pages/Settings/Account')
   },
   {
     path: '/lang',
