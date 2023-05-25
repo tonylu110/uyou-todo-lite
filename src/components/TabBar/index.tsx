@@ -1,5 +1,6 @@
 import { defineComponent, ref, watchEffect } from "vue";
 import emitter from "../../utils/emitter";
+import getCloudTodo from "../../utils/getCloudTodo";
 
 export default defineComponent({
   props: {
@@ -53,6 +54,17 @@ export default defineComponent({
           <div className={props.leftImg} c={isLight.value ? '#333' : 'white'} text-20px></div>
         </div>) : null}
         <div font-bold c={isLight.value ? '#333' : 'white'}>{props.title}</div>
+        {props.showRightImg && localStorage.getItem('uid') ? 
+        <div 
+          absolute right-46px
+          border="1px solid #594b4230"
+          h-30px w-30px cursor-pointer
+          flex justify-center items-center
+          rounded-5px bg="hover:black/10 active:black/20" 
+          onClick={() => getCloudTodo()}
+        >
+          <div i-ph:cloud-arrow-down-bold c-white text-20px></div>
+        </div> : null}
         {props.showRightImg ? 
         <div 
           absolute right-10px

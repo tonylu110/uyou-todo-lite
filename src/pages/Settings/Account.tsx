@@ -1,12 +1,13 @@
 import { defineComponent, reactive, ref } from "vue";
-import Dialog from "../components/Dialog/Dialog.vue"
+import Dialog from "../../components/Dialog/Dialog.vue"
 import TabBar from "../../components/TabBar";
 import SettingList from "../../components/SettingList";
-import Item from "../components/SettingList/ItemBox/Item/Item.vue";
-import ItemButton from "../components/SettingList/ItemBox/ItemButton/ItemButton.vue";
+import Item from "../../components/SettingList/ItemBox/Item/Item.vue";
+import ItemButton from "../../components/SettingList/ItemBox/ItemButton/ItemButton.vue";
 import { useRouter } from "vue-router";
 import { createToast } from "../../components/Toast";
 import { useI18n } from "vue-i18n";
+import { updateData } from "../../utils/getUser";
 
 export default defineComponent({
   setup() {
@@ -132,6 +133,12 @@ export default defineComponent({
       isLogout.value = false
     }
 
+    const autoUpdateState = ref(updateData)
+    const changeAutoUpdate = () => {
+      autoUpdateState.value = !autoUpdateState.value
+      localStorage.setItem('updateData', autoUpdateState.value + '')
+    }
+
     return () => (
       <>
         <TabBar
@@ -170,6 +177,14 @@ export default defineComponent({
             </div>
           )}
           {isLogin.value ? null : <ItemButton mode="primary" onClick={login}>{t('accountPage.login')}</ItemButton>}
+          {isLogin.value ? 
+            <Item
+              title="Auto Update" 
+              showSwitch={true} 
+              switchState={autoUpdateState.value} 
+              onSwitchFun={changeAutoUpdate}
+            /> 
+          : null}
           {isLogin.value ? <ItemButton mode="error" onClick={logout}>{t('accountPage.logout')}</ItemButton> : null}
           <Dialog title={t('accountPage.hit')} dialogShow={dialogShow.value} onReturn={returnFn} onCancel={() => dialogShow.value = !dialogShow.value}>
             {dialogMsg.value}

@@ -6,8 +6,8 @@ import Dialog from './components/Dialog/Dialog.vue';
 import { versionCode } from './utils/appVersion';
 import { open } from '@tauri-apps/api/shell';
 import { useI18n } from 'vue-i18n';
-import { isLogin, uid } from './utils/getUser';
-import LocalStorage from './utils/localStorage';
+import { isLogin, updateData } from './utils/getUser';
+import getCloudTodo from './utils/getCloudTodo';
 
 const { t } = useI18n()
 
@@ -33,21 +33,8 @@ onMounted(() => {
       }
     })
   }
-  if (isLogin) {
-    fetch('https://api.todo.uyou.org.cn/gettodo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        uid: uid
-      })
-    }).then(res => {
-      return res.json()
-    }).then(res => {
-      localStorage.setItem('ToDo', res.data)
-      emitter.emit('todoData', LocalStorage('get'))
-    })
+  if (isLogin && updateData) {
+    getCloudTodo()
   }
 })
 </script>
