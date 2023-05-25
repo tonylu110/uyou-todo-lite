@@ -179,7 +179,7 @@ export default defineComponent({
           {isLogin.value ? null : <ItemButton mode="primary" onClick={login}>{t('accountPage.login')}</ItemButton>}
           {isLogin.value ? 
             <Item
-              title="Auto Update" 
+              title={t('accountPage.autoUpdate')}
               showSwitch={true} 
               switchState={autoUpdateState.value} 
               onSwitchFun={changeAutoUpdate}

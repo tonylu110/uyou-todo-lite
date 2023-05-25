@@ -1,10 +1,12 @@
 import { createI18n } from 'vue-i18n'
 import zhCN from './zh-cn.json'
 import en from './en.json'
+import zhTW from './zh-tw.json'
 
 const messages = {
   'zh-cn': zhCN,
-  'en-us': en
+  'en-us': en,
+  'zh-tw': zhTW
 }
 
 const localLang = localStorage.getItem('lang')

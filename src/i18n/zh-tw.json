@@ -1,0 +1,51 @@
+{
+  "settingsPage": {
+    "settings": "設定",
+    "myAcc": "我的賬號",
+    "notLogin": "未登入",
+    "clearData": "清除資料",
+    "clearDataTrue": "是否清除資料？"
+  },
+  "accountPage": {
+    "account": "賬號",
+    "login": "登入",
+    "logout": "登出",
+    "plzInputAcc": "請輸入賬號",
+    "plzInputPass": "請輸入密碼",
+    "plzInAccAndPass": "請輸入賬號和密碼",
+    "syncing": "同步 ToDo 中...",
+    "syncSuccess": "同步 ToDo 成功",
+    "syncError": "同步 ToDo 錯誤",
+    "syncFail": "同步 ToDo 失敗",
+    "loginError": "登入錯誤",
+    "logoutWindow": "你確定要登出嗎？",
+    "hit": "提示",
+    "autoUpdate": "自動更新"
+  },
+  "dialog": {
+    "cancel": "取消",
+    "return": "確定",
+    "hit": "提示"
+  },
+  "langPage": {
+    "lang": "語言",
+    "withSys": "跟隨系統"
+  },
+  "firstList": [
+    "歡迎使用 uyou ToDo",
+    "將滑鼠移至 ToDo 項的左邊，完成 ToDo",
+    "將滑鼠移至 ToDo 項的右邊，刪除 ToDo",
+    "將滑鼠移至 ToDo 標題欄右上角，複製 ToDo 內容"
+  ],
+  "updatePage": {
+    "update": "更新",
+    "autoUpdate": "自動更新",
+    "toUpdate": "應用更新",
+    "checkingUpdate": "檢查更新中...",
+    "newVersion": "新版本",
+    "gotoUpdate": "前往更新",
+    "noUpdate": "暫無更新",
+    "checkUpdate": "檢查更新",
+    "changelog": "更新日誌"
+  }
+}

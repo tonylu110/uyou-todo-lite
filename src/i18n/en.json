@@ -19,7 +19,8 @@
     "syncFail": "sync todo data fail",
     "loginError": "login error",
     "logoutWindow": "Are you want to log out?",
-    "hit": "Hit"
+    "hit": "Hit",
+    "autoUpdate": "Auto Update"
   },
   "dialog": {
     "cancel": "Cancel",

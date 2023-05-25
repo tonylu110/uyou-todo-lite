@@ -19,7 +19,8 @@
     "syncFail": "同步 ToDo 失败",
     "loginError": "登录错误",
     "logoutWindow": "你确定要登出吗？",
-    "hit": "提示"
+    "hit": "提示",
+    "autoUpdate": "自动更新"
   },
   "dialog": {
     "cancel": "取消",
