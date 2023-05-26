@@ -3,5 +3,9 @@
 }
 
 body {
-  --uno: m-0 p-0 select-none;
+  --uno: m-0 p-0 select-none font-sans;
+}
+
+textarea, input {
+  --uno: font-sans;
 }

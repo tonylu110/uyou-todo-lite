@@ -47,5 +47,6 @@
     "noUpdate": "暂无更新",
     "checkUpdate": "检查更新",
     "changelog": "更新日志"
-  }
+  },
+  "completed": "已完成"
 }

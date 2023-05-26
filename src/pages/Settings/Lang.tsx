@@ -63,7 +63,7 @@ export default defineComponent({
                 relative min-h-30px h-30px w="[calc(100%-30px)]"
                 p="y-10px x-15px" bg="white active:primary-d" cursor-pointer
                 flex items-center justify-between
-                c="#333 active:white"
+                c="#333 active:white" border-b="1px solid black/10"
                 onClick={() => menuClick('zh-cn')}
               >
                 <span>中文（简体）</span>

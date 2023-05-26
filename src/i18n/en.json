@@ -47,5 +47,6 @@
     "noUpdate": "Don't have any update",
     "checkUpdate": "Check Update",
     "changelog": "Update Change Log"
-  }
+  },
+  "completed": "Completed"
 }
