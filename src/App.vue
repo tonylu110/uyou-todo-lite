@@ -37,11 +37,16 @@ onMounted(() => {
     getCloudTodo()
   }
 })
+
+const noTitleBar = ref(localStorage.getItem('noTitleBar') === 'true')
+emitter.on('noTitleBar', data => {
+  noTitleBar.value = data as boolean
+})
 </script>
 
 <template>
   <div :class="bgColor" h-screen w-screen>
-    <title-bar></title-bar>
+    <title-bar v-if="!noTitleBar"></title-bar>
     <router-view></router-view>
     <Dialog 
       :title="newVersion" 

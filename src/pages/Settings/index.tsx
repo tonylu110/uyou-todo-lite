@@ -8,6 +8,7 @@ import langImg from "../../assets/images/lang.png";
 import ItemBox from "../../components/SettingList/ItemBox/ItemBox.vue";
 import ItemButton from "../../components/SettingList/ItemBox/ItemButton/ItemButton.vue";
 import Dialog from "../../components/Dialog/Dialog.vue";
+import emitter from "../../utils/emitter";
 
 export default defineComponent({
   setup() {
@@ -26,6 +27,16 @@ export default defineComponent({
     const clearData = () => {
       localStorage.clear()
       location.reload()
+    }
+
+    const noTitleBar = ref(localStorage.getItem('noTitleBar') === 'true')
+    const setTitleBar = () => {
+      noTitleBar.value = !noTitleBar.value
+      localStorage.setItem('noTitleBar', noTitleBar.value + '')
+      emitter.emit('noTitleBar', noTitleBar.value)
+      setTimeout(() => {
+        emitter.emit('titleColor', true)
+      }, 0)
     }
 
     return () => (
@@ -49,6 +60,9 @@ export default defineComponent({
               onSwitchFun={setAutoUpdate}
             />
             <Item title={t('updatePage.toUpdate')} onItemFun={() => router.push('/update')}/>
+          </ItemBox>
+          <ItemBox>
+            <Item title="no title bar mode" showSwitch={true} switchState={noTitleBar.value} onSwitchFun={setTitleBar}/>
           </ItemBox>
           <ItemButton mode="error" onClick={() => dialogShow.value = true}>{t('settingsPage.clearData')}</ItemButton>
           <ItemButton
