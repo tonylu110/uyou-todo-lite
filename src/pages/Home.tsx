@@ -17,7 +17,7 @@ export default defineComponent({
         <TabBar
           showLeftImg={true}
           showRightImg={true}
-          leftImg="i-mdi:cog"
+          leftImg="i-ph:gear-fine-bold"
           title="uyou ToDo"
           onLeftFn={() => router.push('/settings')}
         />

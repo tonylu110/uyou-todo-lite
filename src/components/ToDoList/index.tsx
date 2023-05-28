@@ -60,9 +60,8 @@ export default defineComponent({
     return () => (
       <List bgColor="bg-#edd9b7">
         {showAddItem.value ? <AddItem onAdd={add}/> : null}
-        {list.value.map((item) => {
+        {list.value.filter(listData => !listData.ok).map((item) => {
           return (
-            item.ok ? null :
             <Item 
               time={item.id}
               text={item.text}
@@ -92,18 +91,16 @@ export default defineComponent({
         </div>
         {showNotDo.value ? (
           <>
-            {list.value.map((item) => {
+            {list.value.filter(listData => listData.ok).map((item) => {
               return (
-                item.ok ? 
-                  <Item 
-                    time={item.id}
-                    text={item.text}
-                    isOk={item.ok}
-                    key={item.id}
-                    onSetOk={setOk}
-                    onDel={del}
-                  />
-                : null
+                <Item 
+                  time={item.id}
+                  text={item.text}
+                  isOk={item.ok}
+                  key={item.id}
+                  onSetOk={setOk}
+                  onDel={del}
+                />
               )
             })}
           </>
