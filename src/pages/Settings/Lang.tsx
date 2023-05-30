@@ -54,10 +54,10 @@ export default defineComponent({
                 p="y-10px x-15px" bg="white active:primary-d" cursor-pointer
                 flex items-center justify-between
                 c="#333 active:white" border-b="1px solid black/10"
-                onClick={() => menuClick('en')}
+                onClick={() => menuClick('en-us')}
               >
                 <span>English</span>
-                {langShow('en') ? <div i-mdi:check text-24px c-primary-d></div> : null}
+                {langShow('en-us') ? <div i-mdi:check text-24px c-primary-d></div> : null}
               </div>
               <div
                 relative min-h-30px h-30px w="[calc(100%-30px)]"
