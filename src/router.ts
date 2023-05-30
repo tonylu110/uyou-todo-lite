@@ -20,12 +20,16 @@ const routes = [
     path: '/lang',
     name: 'lang',
     component: () => import('./pages/Settings/Lang')
-  }
-  ,
+  },
   {
     path: '/update',
     name: 'update',
     component: () => import('./pages/Settings/Update')
+  },
+  {
+    path: '/exmode',
+    name: 'exmode',
+    component: () => import('./pages/Settings/ExMode')
   }
 ]
 

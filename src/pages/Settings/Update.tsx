@@ -50,6 +50,15 @@ export default defineComponent({
       }
     }
 
+    const exState = ref(1)
+    const toDev = () => {
+      exState.value = exState.value + 1
+      if (exState.value > 6 || localStorage.getItem('exMode') === 'true') {
+        localStorage.setItem('exMode', 'true')
+        createToast({msg: 'opened ex mode'})
+      }
+    }
+
     onMounted(() => {
       getUpdate()
     })
@@ -74,6 +83,7 @@ export default defineComponent({
                 h-100px m="x-0 y-15px"
                 src={logo} 
                 alt="logo" 
+                onClick={toDev}
               />
               <span mb={newVersion.value ? '' : '15px'} c="black/40" font-bold>
                 uyou ToDo lite v{appVersion}

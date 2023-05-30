@@ -80,6 +80,9 @@ export default defineComponent({
             <Item title={t('settingsPage.noTitleBar')} showSwitch={true} switchState={noTitleBar.value} onSwitchFun={setTitleBar}/>
             <Item title={t('settingsPage.enterAdd')} showSwitch={true} switchState={enterAddItem.value} onSwitchFun={setEnterAddItem}/>
           </ItemBox>
+          {localStorage.getItem('exMode') === 'true' ? 
+          <Item title="ex mode" onItemFun={() => router.push('/exmode')}/>
+          : null}
           <ItemButton mode="error" onClick={() => dialogShow.value = true}>{t('settingsPage.clearData')}</ItemButton>
           <ItemButton
             onClick={() => router.push('/lang')}
