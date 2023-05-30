@@ -28,7 +28,7 @@
         "unminimize": true,
         "startDragging": true,
         "setAlwaysOnTop": true,
-        "center": true
+        "center": false
       }
     },
     "bundle": {

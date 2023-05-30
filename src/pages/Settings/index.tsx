@@ -39,6 +39,12 @@ export default defineComponent({
       }, 0)
     }
 
+    const enterAddItem = ref(localStorage.getItem('enterAddItem') === 'true')
+    const setEnterAddItem = () => {
+      enterAddItem.value = !enterAddItem.value
+      localStorage.setItem('enterAddItem', enterAddItem.value + '')
+    }
+
     return () => (
       <>
         <TabBar
@@ -63,6 +69,7 @@ export default defineComponent({
           </ItemBox>
           <ItemBox>
             <Item title="no title bar mode" showSwitch={true} switchState={noTitleBar.value} onSwitchFun={setTitleBar}/>
+            <Item title="enter to add item" showSwitch={true} switchState={enterAddItem.value} onSwitchFun={setEnterAddItem}/>
           </ItemBox>
           <ItemButton mode="error" onClick={() => dialogShow.value = true}>{t('settingsPage.clearData')}</ItemButton>
           <ItemButton

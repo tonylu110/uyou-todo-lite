@@ -18,6 +18,8 @@ export default defineComponent({
       emitter.emit('showAddItem')
     }
 
+    const enterAddItem = localStorage.getItem('enterAddItem') === 'true'
+
     return () => (
       <>
         <div
@@ -39,6 +41,7 @@ export default defineComponent({
             text-1rem bg="selection:#dcc6a9"
             rows="3" 
             v-model={text.value}
+            onKeydown={(e: KeyboardEvent) => e.code.toLocaleLowerCase() === 'enter' && enterAddItem ? add() : null}
           />
         </div>
         <div 

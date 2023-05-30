@@ -1,5 +1,4 @@
 import emitter from "./emitter"
-import { uid } from "./getUser"
 import LocalStorage from "./localStorage"
 
 export default () => {
