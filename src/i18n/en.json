@@ -51,5 +51,9 @@
     "checkUpdate": "Check Update",
     "changelog": "Update Change Log"
   },
-  "completed": "Completed"
+  "completed": "Completed",
+  "closeWindowDialog": {
+    "title": "Hit",
+    "msg": "Do you want to close uyou ToDo?"
+  }
 }

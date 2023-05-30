@@ -3,6 +3,7 @@ import emitter from "../../utils/emitter";
 import getCloudTodo from "../../utils/getCloudTodo";
 import { appWindow } from "@tauri-apps/api/window";
 import Dialog from "../Dialog/Dialog.vue";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   props: {
@@ -29,6 +30,7 @@ export default defineComponent({
   },
   emits: ['leftFn'],
   setup(props, { emit }) {
+    const { t } = useI18n()
     const isLight = ref(props.bgColor === 'light')
 
     const pin = ref(localStorage.getItem('pin') === 'true')
@@ -123,12 +125,12 @@ export default defineComponent({
         </div>
         {noTitleBar.value ? 
         <Dialog 
-          title="hit"
+          title={t('closeWindowDialog.title')}
           dialogShow={dialogShow.value} 
           onCancel={() => dialogShow.value = false}
           onReturn={() => appWindow.close()}
         >
-          <span>Do you want to close uyou ToDo?</span>
+          <span>{t('closeWindowDialog.msg')}</span>
         </Dialog>
         : null}
       </>

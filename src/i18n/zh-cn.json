@@ -51,5 +51,9 @@
     "checkUpdate": "检查更新",
     "changelog": "更新日志"
   },
-  "completed": "已完成"
+  "completed": "已完成",
+  "closeWindowDialog": {
+    "title": "提示",
+    "msg": "你想要关闭 uyou ToDo 吗？"
+  }
 }

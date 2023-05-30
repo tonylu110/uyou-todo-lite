@@ -50,11 +50,7 @@ export default defineComponent({
     const setAutoStart = async () => {
       autoStart.value = !autoStart.value
       localStorage.setItem('autoStart', autoStart.value + '')
-      if (autoStart.value) {
-        await enable()
-      } else {
-        await disable()
-      }
+      autoStart.value ? await enable() : await disable()
     }
 
     return () => (
