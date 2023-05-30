@@ -4,7 +4,10 @@
     "myAcc": "我的賬號",
     "notLogin": "未登入",
     "clearData": "清除資料",
-    "clearDataTrue": "是否清除資料？"
+    "clearDataTrue": "是否清除資料？",
+    "autoStart": "自動啟動",
+    "noTitleBar": "無標題欄模式",
+    "enterAdd": "回車新增 ToDo 項"
   },
   "accountPage": {
     "account": "賬號",

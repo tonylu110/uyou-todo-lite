@@ -80,9 +80,9 @@ export default defineComponent({
             <Item title={t('updatePage.toUpdate')} onItemFun={() => router.push('/update')}/>
           </ItemBox>
           <ItemBox>
-            <Item title="auto start" showSwitch={true} switchState={autoStart.value} onSwitchFun={setAutoStart}/>
-            <Item title="no title bar mode" showSwitch={true} switchState={noTitleBar.value} onSwitchFun={setTitleBar}/>
-            <Item title="enter to add item" showSwitch={true} switchState={enterAddItem.value} onSwitchFun={setEnterAddItem}/>
+            <Item title={t('settingsPage.autoStart')} showSwitch={true} switchState={autoStart.value} onSwitchFun={setAutoStart}/>
+            <Item title={t('settingsPage.noTitleBar')} showSwitch={true} switchState={noTitleBar.value} onSwitchFun={setTitleBar}/>
+            <Item title={t('settingsPage.enterAdd')} showSwitch={true} switchState={enterAddItem.value} onSwitchFun={setEnterAddItem}/>
           </ItemBox>
           <ItemButton mode="error" onClick={() => dialogShow.value = true}>{t('settingsPage.clearData')}</ItemButton>
           <ItemButton

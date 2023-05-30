@@ -4,7 +4,10 @@
     "myAcc": "我的账号",
     "notLogin": "未登录",
     "clearData": "清除数据",
-    "clearDataTrue": "是否清除数据？"
+    "clearDataTrue": "是否清除数据？",
+    "autoStart": "自动启动",
+    "noTitleBar": "无标题栏模式",
+    "enterAdd": "回车添加 ToDo 项"
   },
   "accountPage": {
     "account": "账号",

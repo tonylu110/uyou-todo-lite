@@ -4,7 +4,10 @@
     "myAcc": "My Account",
     "notLogin": "Not Log in",
     "clearData": "Clear Data",
-    "clearDataTrue": "Do you want to clear data?"
+    "clearDataTrue": "Do you want to clear data?",
+    "autoStart": "Auto Start",
+    "noTitleBar": "No title bar mode",
+    "enterAdd": "Enter to add ToDo item"
   },
   "accountPage": {
     "account": "Account",
