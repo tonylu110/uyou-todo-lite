@@ -3,6 +3,7 @@ import TabBar from "../../components/TabBar";
 import { useRouter } from "vue-router";
 import SettingList from "../../components/SettingList";
 import Item from "../../components/SettingList/ItemBox/Item/Item.vue";
+import emitter from "../../utils/emitter";
 
 export default defineComponent({
   setup() {
@@ -12,6 +13,13 @@ export default defineComponent({
     const closeExMode = () => {
       exState.value = !exState.value
       localStorage.setItem('exMode', exState.value + '')
+    }
+
+    const shortcut = ref(localStorage.getItem('addShortcut') === 'true')
+    const setShortcut = () => {
+      shortcut.value = !shortcut.value
+      localStorage.setItem('addShortcut', shortcut.value + '')
+      emitter.emit('getShortcut', shortcut.value)
     }
 
     return () => (
@@ -28,6 +36,12 @@ export default defineComponent({
             showSwitch={true} 
             switchState={exState.value} 
             onSwitchFun={closeExMode}
+          />
+          <Item 
+            title="⚠️ add item shortcut"
+            showSwitch={true} 
+            switchState={shortcut.value} 
+            onSwitchFun={setShortcut}
           />
         </SettingList>
       </>

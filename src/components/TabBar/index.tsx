@@ -1,4 +1,5 @@
 import { defineComponent, ref, watchEffect } from "vue";
+import { register, unregister } from '@tauri-apps/api/globalShortcut';
 import emitter from "../../utils/emitter";
 import getCloudTodo from "../../utils/getCloudTodo";
 import { appWindow } from "@tauri-apps/api/window";

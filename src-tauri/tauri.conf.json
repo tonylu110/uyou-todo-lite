@@ -29,6 +29,9 @@
         "startDragging": true,
         "setAlwaysOnTop": true,
         "center": false
+      },
+      "globalShortcut": {
+        "all": true
       }
     },
     "bundle": {
