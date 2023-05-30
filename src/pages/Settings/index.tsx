@@ -1,6 +1,7 @@
 import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router"
 import { useI18n } from "vue-i18n";
+import { enable, disable } from "tauri-plugin-autostart-api";
 import TabBar from "../../components/TabBar";
 import SettingList from "../../components/SettingList";
 import Item from "../../components/SettingList/ItemBox/Item/Item.vue";
@@ -45,6 +46,17 @@ export default defineComponent({
       localStorage.setItem('enterAddItem', enterAddItem.value + '')
     }
 
+    const autoStart = ref(localStorage.getItem('autoStart') === 'true')
+    const setAutoStart = async () => {
+      autoStart.value = !autoStart.value
+      localStorage.setItem('autoStart', autoStart.value + '')
+      if (autoStart.value) {
+        await enable()
+      } else {
+        await disable()
+      }
+    }
+
     return () => (
       <>
         <TabBar
@@ -68,6 +80,7 @@ export default defineComponent({
             <Item title={t('updatePage.toUpdate')} onItemFun={() => router.push('/update')}/>
           </ItemBox>
           <ItemBox>
+            <Item title="auto start" showSwitch={true} switchState={autoStart.value} onSwitchFun={setAutoStart}/>
             <Item title="no title bar mode" showSwitch={true} switchState={noTitleBar.value} onSwitchFun={setTitleBar}/>
             <Item title="enter to add item" showSwitch={true} switchState={enterAddItem.value} onSwitchFun={setEnterAddItem}/>
           </ItemBox>
