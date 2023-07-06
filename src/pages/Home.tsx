@@ -1,9 +1,9 @@
-import { defineComponent } from "vue";
-import { useRouter } from "vue-router"
-import TabBar from "../components/TabBar";
-import ToDoList from "../components/ToDoList";
-import firstLoad from "../utils/firstLoad";
-import LocalStorage from "../utils/localStorage";
+import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
+import TabBar from '../components/TabBar'
+import ToDoList from '../components/ToDoList'
+import firstLoad from '../utils/firstLoad'
+import LocalStorage from '../utils/localStorage'
 
 export default defineComponent({
   setup() {
@@ -24,5 +24,5 @@ export default defineComponent({
         <ToDoList listData={list}/>
       </>
     )
-  }
+  },
 })

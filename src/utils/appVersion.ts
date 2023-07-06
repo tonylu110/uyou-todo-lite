@@ -1,4 +1,5 @@
 import { getVersion } from '@tauri-apps/api/app'
+
 const appVersion = await getVersion()
 
 const versionCodeArr: Array<number> = appVersion.split('.').map((item) => {

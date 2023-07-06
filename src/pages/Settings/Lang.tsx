@@ -1,8 +1,8 @@
-import { defineComponent } from "vue";
-import TabBar from "../../components/TabBar";
-import SettingList from "../../components/SettingList";
-import { useI18n } from "vue-i18n";
-import { useRouter } from "vue-router";
+import { defineComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import TabBar from '../../components/TabBar'
+import SettingList from '../../components/SettingList'
 
 export default defineComponent({
   setup() {
@@ -16,16 +16,15 @@ export default defineComponent({
       else
         locale.value = lang
     }
-    
+
     const langShow = (lang: string): boolean => {
       const langLocal = localStorage.getItem('lang')
-      if (lang === 'withSystem' && langLocal === null) {
+      if (lang === 'withSystem' && langLocal === null)
         return true
-      } else if (lang === langLocal) {
+      else if (lang === langLocal)
         return true
-      } else {
+      else
         return false
-      }
     }
 
     return () => (
@@ -84,5 +83,5 @@ export default defineComponent({
         </SettingList>
       </>
     )
-  }
+  },
 })

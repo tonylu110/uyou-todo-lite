@@ -1,10 +1,10 @@
 <template scoped>
-  <div 
+  <div
     mb-10px shadow-item rounded-7px
     w="100%"
   >
     <div rounded-7px overflow-hidden class="box">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>

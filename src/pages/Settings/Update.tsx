@@ -1,16 +1,17 @@
-import { Ref, defineComponent, onMounted, ref } from "vue";
-import { getVersion } from '@tauri-apps/api/app';
-import { open } from '@tauri-apps/api/shell';
-import TabBar from "../../components/TabBar";
-import { useRouter } from "vue-router";
-import SettingList from "../../components/SettingList";
+import type { Ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
+import { getVersion } from '@tauri-apps/api/app'
+import { open } from '@tauri-apps/api/shell'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import TabBar from '../../components/TabBar'
+import SettingList from '../../components/SettingList'
 import logo from '../../assets/images/icon.png'
-import ItemButton from "../../components/SettingList/ItemBox/ItemButton/ItemButton.vue";
-import { versionCode } from "../../utils/appVersion";
-import { createToast } from "../../components/Toast";
-import { useI18n } from "vue-i18n";
+import ItemButton from '../../components/SettingList/ItemBox/ItemButton/ItemButton.vue'
+import { versionCode } from '../../utils/appVersion'
+import { createToast } from '../../components/Toast'
 
-const appVersion = await getVersion();
+const appVersion = await getVersion()
 
 export default defineComponent({
   setup() {
@@ -24,17 +25,18 @@ export default defineComponent({
 
     const getUpdate = () => {
       setTimeout(() => {
-        fetch('https://api.todo.uyou.org.cn/update/get').then(res => {
+        fetch('https://api.todo.uyou.org.cn/update/get').then((res) => {
           return res.json()
-        }).then(res => {
+        }).then((res) => {
           if (res[2].code > versionCode) {
             newVersion.value = `${t('updatePage.newVersion')}: v${res[2].version}`
             updateMsg.value = res[2].data
             updateButtonText.value = t('updatePage.gotoUpdate')
-          } else {
+          }
+          else {
             newVersion.value = t('updatePage.noUpdate')
             updateButtonText.value = t('updatePage.checkUpdate')
-            createToast({msg: newVersion.value})
+            createToast({ msg: newVersion.value })
           }
         })
       }, Math.floor(Math.random () * 900) + 100)
@@ -45,7 +47,8 @@ export default defineComponent({
         updateButtonText.value = t('updatePage.checkingUpdate')
         newVersion.value = ''
         getUpdate()
-      } else {
+      }
+      else {
         open('https://github.com/tonylu110/uyou-todo-lite/releases')
       }
     }
@@ -55,7 +58,7 @@ export default defineComponent({
       exState.value = exState.value + 1
       if (exState.value > 6 || localStorage.getItem('exMode') === 'true') {
         localStorage.setItem('exMode', 'true')
-        createToast({msg: 'opened ex mode'})
+        createToast({ msg: 'opened ex mode' })
       }
     }
 
@@ -79,20 +82,22 @@ export default defineComponent({
               bg-white rounded-7px mb-10px
               p="x-10px y-0" shadow-item
             >
-              <img 
+              <img
                 h-100px m="x-0 y-15px"
-                src={logo} 
-                alt="logo" 
+                src={logo}
+                alt="logo"
                 onClick={toDev}
               />
               <span mb={newVersion.value ? '' : '15px'} c="black/40" font-bold>
                 uyou ToDo lite v{appVersion}
               </span>
-              {newVersion.value ? <span c="black/40" mt-5px text-14px mb-15px font-bold>
+              {newVersion.value
+                ? <span c="black/40" mt-5px text-14px mb-15px font-bold>
                 {newVersion.value}
-              </span> : null}
-              {updateMsg.value.length > 0 ? 
-              <div 
+              </span>
+                : null}
+              {updateMsg.value.length > 0
+                ? <div
                 w="[calc(100%-10px)]" h-auto
                 flex="~ col" justify-center items-center
                 border-t="1px solid black/15"
@@ -108,11 +113,12 @@ export default defineComponent({
                     </li>
                   })}
                 </ul>
-              </div> : null}
+              </div>
+                : null}
             </div>
           </div>
-          <ItemButton 
-            mode="primary" 
+          <ItemButton
+            mode="primary"
             bottom={true}
             onClick={updateButtonCilck}
           >
@@ -121,5 +127,5 @@ export default defineComponent({
         </SettingList>
       </>
     )
-  }
+  },
 })

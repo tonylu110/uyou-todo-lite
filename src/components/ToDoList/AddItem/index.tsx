@@ -1,6 +1,6 @@
-import moment from "moment";
-import { defineComponent, ref, watchEffect } from "vue";
-import emitter from "../../../utils/emitter";
+import moment from 'moment'
+import { defineComponent, ref, watchEffect } from 'vue'
+import emitter from '../../../utils/emitter'
 
 export default defineComponent({
   emits: ['add'],
@@ -34,17 +34,17 @@ export default defineComponent({
           >
             <span c="#cebfae">{moment(time.value).format('hh:mm A')}</span>
           </div>
-          <textarea 
+          <textarea
             mt-10px c="#6e492f" border-none
             max-w="100%" min-w="100%"
             outline-none bg-transparent resize-none
             text-1rem bg="selection:#dcc6a9"
-            rows="3" 
+            rows="3"
             v-model={text.value}
             onKeydown={(e: KeyboardEvent) => e.code.toLocaleLowerCase() === 'enter' && enterAddItem ? add() : null}
           />
         </div>
-        <div 
+        <div
           w="100%" mb-10px
           flex justify-center items-center
           overflow-hidden rounded-7px
@@ -76,5 +76,5 @@ export default defineComponent({
         </div>
       </>
     )
-  }
+  },
 })

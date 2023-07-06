@@ -6,7 +6,7 @@ import zhTW from './zh-tw.json'
 const messages = {
   'zh-cn': zhCN,
   'en-us': en,
-  'zh-tw': zhTW
+  'zh-tw': zhTW,
 }
 
 const localLang = localStorage.getItem('lang')
@@ -16,7 +16,7 @@ const i18n = createI18n({
   legacy: false,
   locale: isAuto ? navigator.language.toLowerCase() : localLang,
   fallbackLocale: 'en-us',
-  messages
+  messages,
 })
 
 export default i18n

@@ -1,5 +1,5 @@
-import { defineComponent, renderSlot } from "vue";
-import List from "../List";
+import { defineComponent, renderSlot } from 'vue'
+import List from '../List'
 
 export default defineComponent({
   setup(_props, { slots }) {
@@ -8,5 +8,5 @@ export default defineComponent({
         {renderSlot(slots, 'default')}
       </List>
     )
-  }
+  },
 })

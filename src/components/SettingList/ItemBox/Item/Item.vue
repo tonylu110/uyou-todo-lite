@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Switch from '../../Switch';
+import Switch from '../../Switch'
 
 withDefaults(defineProps<{
   switchState?: boolean
@@ -11,17 +11,17 @@ withDefaults(defineProps<{
   switchState: true,
   title: 'title',
   showSwitch: false,
-  showArrow: true
+  showArrow: true,
 })
 
 const emits = defineEmits<{
-  (e: 'switchFun'): void,
+  (e: 'switchFun'): void
   (e: 'itemFun'): void
 }>()
 </script>
 
 <template>
-  <div 
+  <div
     relative w="[calc(100%-30px)]" min-h-30px h-30px
     p="y-10px x-15px" rounded-7px shadow-item
     :bg="`white ${showSwitch ? '' : 'active:primary-d'}` " :cursor="showSwitch ? 'auto' : 'pointer'"
@@ -32,12 +32,12 @@ const emits = defineEmits<{
   >
     <div flex items-center>
       <img
-        w-25px h-25px
+        v-if="itemImg" w-25px
+        h-25px
         m="r-22.5px l-[-2.5px]"
-        v-if="itemImg" 
-        :src="itemImg" 
+        :src="itemImg"
         alt=""
-      />
+      >
       <span
         w="[calc(100vw-115px)]" whitespace-nowrap
         overflow-hidden text-ellipsis
@@ -50,6 +50,6 @@ const emits = defineEmits<{
       :swich-state="switchState"
       @switch="emits('switchFun')"
     />
-    <div i-mdi:chevron-right text-24px absolute right-15px v-if="showArrow && !showSwitch"></div>
+    <div v-if="showArrow && !showSwitch" i-mdi:chevron-right text-24px absolute right-15px />
   </div>
 </template>

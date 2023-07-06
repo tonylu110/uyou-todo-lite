@@ -1,23 +1,7 @@
-<template>
-  <dialog :class="`alert ${dialogShow ? '' : 'hide'}`" ref="dialog">
-    <div class="title" data-tauri-drag-region>
-      {{ title }}
-    </div>
-    <div class="body" :style="{alignItems: title === t('dialog.hit') ? 'center' : ''}">
-      <slot/>
-    </div>
-    <div class="buttons">
-      <div class="cancel" v-if="cancelButtonShow" @click="emits('cancel')">{{ t('dialog.cancel') }}</div>
-      <div class="return" :style="{width: cancelButtonShow ? '' : '100%'}" @click="emits('return')">{{ t('dialog.return') }}</div>
-    </div>
-  </dialog>
-</template>
-
 <script setup lang="ts">
-import {onMounted, Ref, ref, watchEffect} from "vue"
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n()
+import type { Ref } from 'vue'
+import { onMounted, ref, watchEffect } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = withDefaults(defineProps<{
   title?: string
@@ -26,15 +10,17 @@ const props = withDefaults(defineProps<{
 }>(), {
   title: 'title',
   cancelButtonShow: true,
-  dialogShow: false
+  dialogShow: false,
 })
 
-const dialog = ref(null) as unknown as Ref<HTMLDialogElement>
-
 const emits = defineEmits<{
-  (e: 'cancel'): void,
+  (e: 'cancel'): void
   (e: 'return'): void
 }>()
+
+const { t } = useI18n()
+
+const dialog = ref(null) as unknown as Ref<HTMLDialogElement>
 
 onMounted(() => {
   const closeAlert = () => {
@@ -45,12 +31,32 @@ onMounted(() => {
     if (props.dialogShow) {
       dialog.value.removeEventListener('animationend', closeAlert)
       dialog.value.showModal()
-    } else {
+    }
+    else {
       dialog.value.addEventListener('animationend', closeAlert)
     }
   })
 })
 </script>
+
+<template>
+  <dialog ref="dialog" :class="`alert ${dialogShow ? '' : 'hide'}`">
+    <div class="title" data-tauri-drag-region>
+      {{ title }}
+    </div>
+    <div class="body" :style="{ alignItems: title === t('dialog.hit') ? 'center' : '' }">
+      <slot />
+    </div>
+    <div class="buttons">
+      <div v-if="cancelButtonShow" class="cancel" @click="emits('cancel')">
+        {{ t('dialog.cancel') }}
+      </div>
+      <div class="return" :style="{ width: cancelButtonShow ? '' : '100%' }" @click="emits('return')">
+        {{ t('dialog.return') }}
+      </div>
+    </div>
+  </dialog>
+</template>
 
 <style scoped>
 @import "dialogAnimation.css";

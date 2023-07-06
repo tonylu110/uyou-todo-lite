@@ -1,15 +1,16 @@
-import { Ref, defineComponent, onBeforeUnmount, onMounted, ref } from "vue";
-import List from "../List"
-import Item from "./Item/Item.vue";
-import ITodoList from "../../interface/ITodoListArray";
-import AddItem from "./AddItem";
-import emitter from "../../utils/emitter";
-import saveItemSet from "./Item/saveItemSet";
-import { useI18n } from "vue-i18n";
+import type { Ref } from 'vue'
+import { defineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import List from '../List'
+import type ITodoList from '../../interface/ITodoListArray'
+import emitter from '../../utils/emitter'
+import Item from './Item/Item.vue'
+import AddItem from './AddItem'
+import saveItemSet from './Item/saveItemSet'
 
 export default defineComponent({
   props: {
-    listData: Array
+    listData: Array,
   },
   setup(props) {
     const { t } = useI18n()
@@ -35,12 +36,12 @@ export default defineComponent({
       showAddItem.value = !showAddItem.value
     })
     onBeforeUnmount(() => emitter.off('showAddItem'))
-    
+
     const add = (time: number, text: string) => {
       list.value.unshift({
         id: time,
-        text: text,
-        ok: false
+        text,
+        ok: false,
       })
       saveItemSet(list.value)
     }
@@ -48,7 +49,7 @@ export default defineComponent({
     const showNotDo = ref(localStorage.getItem('showNotDo') === 'true')
     const setShowNotDo = () => {
       showNotDo.value = !showNotDo.value
-      localStorage.setItem('showNotDo', showNotDo.value + '')
+      localStorage.setItem('showNotDo', `${showNotDo.value}`)
     }
 
     onMounted(() => {
@@ -62,7 +63,7 @@ export default defineComponent({
         {showAddItem.value ? <AddItem onAdd={add}/> : null}
         {list.value.filter(listData => !listData.ok).map((item) => {
           return (
-            <Item 
+            <Item
               time={item.id}
               text={item.text}
               isOk={item.ok}
@@ -72,7 +73,7 @@ export default defineComponent({
             />
           )
         })}
-        <div 
+        <div
           bg="#fff6dc hover:#f3ebd3 active:#eae2ca" w-fit whitespace-nowrap
           mb-10px p-x-10px p-y-5px rounded-5px c="#6e492f" font-bold
           flex items-center cursor-pointer shadow="sm black/30"
@@ -80,20 +81,21 @@ export default defineComponent({
         >
           <div i-fluent:caret-down-12-filled text-18px mr-5px rotate={showNotDo.value ? '0' : '-90'} transition-300></div>
             {t('completed')}
-          <div 
+          <div
             ml-5px text-10px
-            rounded-20px bg="#6e492f" c="#fff6dc" 
+            rounded-20px bg="#6e492f" c="#fff6dc"
             w-1rem h-1rem font-normal
             flex items-center justify-center
           >
             {list.value.filter(listData => listData.ok === true).length}
           </div>
         </div>
-        {showNotDo.value ? (
+        {showNotDo.value
+          ? (
           <>
             {list.value.filter(listData => listData.ok).map((item) => {
               return (
-                <Item 
+                <Item
                   time={item.id}
                   text={item.text}
                   isOk={item.ok}
@@ -104,8 +106,9 @@ export default defineComponent({
               )
             })}
           </>
-        ) : null}
-      </List>      
+            )
+          : null}
+      </List>
     )
-  }
+  },
 })

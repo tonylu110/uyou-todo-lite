@@ -1,19 +1,19 @@
-import { defineComponent, ref, renderSlot } from "vue";
-import { PerfectScrollbar } from "vue3-perfect-scrollbar";
-import emitter from "../../utils/emitter";
+import { defineComponent, ref, renderSlot } from 'vue'
+import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
+import emitter from '../../utils/emitter'
 
 export default defineComponent({
   props: {
     bgColor: {
       default: 'bg-#eee',
-      type: String
-    }
+      type: String,
+    },
   },
   setup(props, { slots }) {
     emitter.emit('bgColor', props.bgColor)
 
     const noTitleBar = ref(localStorage.getItem('noTitleBar') === 'true')
-    emitter.on('noTitleBar', data => {
+    emitter.on('noTitleBar', (data) => {
       noTitleBar.value = data as boolean
     })
 
@@ -26,5 +26,5 @@ export default defineComponent({
         { renderSlot(slots, 'default') }
       </PerfectScrollbar>
     )
-  }
+  },
 })

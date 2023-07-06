@@ -1,17 +1,17 @@
-import { createVNode, defineComponent, render } from "vue"
+import { createVNode, defineComponent, render } from 'vue'
 
 interface IProps {
   msg: string
   center?: boolean
 }
 
-export const createToast = ({ msg, center }: IProps, node?: Element) => {
+export function createToast({ msg, center }: IProps, node?: Element) {
   const vm = createVNode(defineComponent({
     props: {
       msg: {
-        default: 'toast'
+        default: 'toast',
       },
-      center: Boolean
+      center: Boolean,
     },
     setup(props: IProps) {
       return () => (
@@ -30,13 +30,13 @@ export const createToast = ({ msg, center }: IProps, node?: Element) => {
           { props.msg }
         </div>
       )
-    }
+    },
   }), { msg, center })
 
   const container = document.createElement('div')
   render(vm, container)
 
-  let domNode = node ? node : document.body
+  const domNode = node || document.body
 
   domNode?.append(container)
   setTimeout(() => {

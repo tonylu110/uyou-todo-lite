@@ -1,6 +1,6 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref } from 'vue'
 import { appWindow } from '@tauri-apps/api/window'
-import emitter from "../../utils/emitter";
+import emitter from '../../utils/emitter'
 
 export default defineComponent({
   setup() {
@@ -9,7 +9,7 @@ export default defineComponent({
 
     const pinWindow = () => {
       pin.value = !pin.value
-      localStorage.setItem('pin', pin.value + '')
+      localStorage.setItem('pin', `${pin.value}`)
       appWindow.setAlwaysOnTop(pin.value)
     }
 
@@ -19,7 +19,7 @@ export default defineComponent({
     })
 
     return () => (
-      <div 
+      <div
         data-tauri-drag-region
         w-screen h-40px backdrop-blur-5px
         flex items-center justify-between
@@ -27,18 +27,18 @@ export default defineComponent({
         border-b="1px solid #594b4230"
       >
         <div
-          bg={pin.value ? 'error-d hover:error-h active:error-a' : 'hover:black/10 active:black/20'} 
+          bg={pin.value ? 'error-d hover:error-h active:error-a' : 'hover:black/10 active:black/20'}
           w-50px h-20px
           flex items-center justify-center
           ml-9px cursor-pointer rounded-5px
-          border={pin.value ? '1px solid error-d hover:error-h active:error-a' : (isLight.value ? '1px solid #594b4230' : '1px solid #594b4230')} 
+          border={pin.value ? '1px solid error-d hover:error-h active:error-a' : (isLight.value ? '1px solid #594b4230' : '1px solid #594b4230')}
           onClick={pinWindow}
         >
           <div i-fluent:pin-48-filled text-14px c={pin.value ? 'white' : (isLight.value ? '#555' : 'white')}></div>
         </div>
         <div flex>
-          <div 
-            bg="hover:black/10 active:black/20" 
+          <div
+            bg="hover:black/10 active:black/20"
             w-50px h-20px
             flex items-center justify-center
             mr-9px cursor-pointer rounded-5px
@@ -47,8 +47,8 @@ export default defineComponent({
           >
             <div i-mdi:minus-thick c={isLight.value ? '#555' : 'white'} text-14px></div>
           </div>
-          <div 
-            bg="error-d hover:error-h active:error-a" 
+          <div
+            bg="error-d hover:error-h active:error-a"
             w-50px h-20px
             flex items-center justify-center
             mr-9px cursor-pointer rounded-5px
@@ -60,5 +60,5 @@ export default defineComponent({
         </div>
       </div>
     )
-  }
+  },
 })

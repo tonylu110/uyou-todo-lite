@@ -1,15 +1,15 @@
-import { defineComponent, ref } from "vue";
-import { useRouter } from "vue-router"
-import { useI18n } from "vue-i18n";
-import { enable, disable } from "tauri-plugin-autostart-api";
-import TabBar from "../../components/TabBar";
-import SettingList from "../../components/SettingList";
-import Item from "../../components/SettingList/ItemBox/Item/Item.vue";
-import langImg from "../../assets/images/lang.png";
-import ItemBox from "../../components/SettingList/ItemBox/ItemBox.vue";
-import ItemButton from "../../components/SettingList/ItemBox/ItemButton/ItemButton.vue";
-import Dialog from "../../components/Dialog/Dialog.vue";
-import emitter from "../../utils/emitter";
+import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { disable, enable } from 'tauri-plugin-autostart-api'
+import TabBar from '../../components/TabBar'
+import SettingList from '../../components/SettingList'
+import Item from '../../components/SettingList/ItemBox/Item/Item.vue'
+import langImg from '../../assets/images/lang.png'
+import ItemBox from '../../components/SettingList/ItemBox/ItemBox.vue'
+import ItemButton from '../../components/SettingList/ItemBox/ItemButton/ItemButton.vue'
+import Dialog from '../../components/Dialog/Dialog.vue'
+import emitter from '../../utils/emitter'
 
 export default defineComponent({
   setup() {
@@ -21,7 +21,7 @@ export default defineComponent({
     const autoUpdate = ref(localStorage.getItem('autoUpdate') === 'true' || !localStorage.getItem('autoUpdate'))
     const setAutoUpdate = () => {
       autoUpdate.value = !autoUpdate.value
-      localStorage.setItem('autoUpdate', autoUpdate.value + '')
+      localStorage.setItem('autoUpdate', `${autoUpdate.value}`)
     }
 
     const dialogShow = ref(false)
@@ -33,7 +33,7 @@ export default defineComponent({
     const noTitleBar = ref(localStorage.getItem('noTitleBar') === 'true')
     const setTitleBar = () => {
       noTitleBar.value = !noTitleBar.value
-      localStorage.setItem('noTitleBar', noTitleBar.value + '')
+      localStorage.setItem('noTitleBar', `${noTitleBar.value}`)
       emitter.emit('noTitleBar', noTitleBar.value)
       setTimeout(() => {
         emitter.emit('titleColor', true)
@@ -43,13 +43,13 @@ export default defineComponent({
     const enterAddItem = ref(localStorage.getItem('enterAddItem') === 'true')
     const setEnterAddItem = () => {
       enterAddItem.value = !enterAddItem.value
-      localStorage.setItem('enterAddItem', enterAddItem.value + '')
+      localStorage.setItem('enterAddItem', `${enterAddItem.value}`)
     }
 
     const autoStart = ref(localStorage.getItem('autoStart') === 'true')
     const setAutoStart = async () => {
       autoStart.value = !autoStart.value
-      localStorage.setItem('autoStart', autoStart.value + '')
+      localStorage.setItem('autoStart', `${autoStart.value}`)
       autoStart.value ? await enable() : await disable()
     }
 
@@ -67,9 +67,9 @@ export default defineComponent({
             onItemFun={() => router.push('/account')}
           />
           <ItemBox>
-            <Item 
+            <Item
               title={t('updatePage.autoUpdate')}
-              showSwitch={true} 
+              showSwitch={true}
               switchState={autoUpdate.value}
               onSwitchFun={setAutoUpdate}
             />
@@ -80,19 +80,19 @@ export default defineComponent({
             <Item title={t('settingsPage.noTitleBar')} showSwitch={true} switchState={noTitleBar.value} onSwitchFun={setTitleBar}/>
             <Item title={t('settingsPage.enterAdd')} showSwitch={true} switchState={enterAddItem.value} onSwitchFun={setEnterAddItem}/>
           </ItemBox>
-          {localStorage.getItem('exMode') === 'true' ? 
-          <Item title="ex mode" onItemFun={() => router.push('/exmode')}/>
-          : null}
+          {localStorage.getItem('exMode') === 'true'
+            ? <Item title="ex mode" onItemFun={() => router.push('/exmode')}/>
+            : null}
           <ItemButton mode="error" onClick={() => dialogShow.value = true}>{t('settingsPage.clearData')}</ItemButton>
           <ItemButton
             onClick={() => router.push('/lang')}
           >
             <img src={langImg} alt="" />
           </ItemButton>
-          <Dialog 
+          <Dialog
             title={t('accountPage.hit')}
-            dialogShow={dialogShow.value} 
-            onReturn={clearData} 
+            dialogShow={dialogShow.value}
+            onReturn={clearData}
             onCancel={() => dialogShow.value = false}
           >
             {t('settingsPage.clearDataTrue')}
@@ -100,5 +100,5 @@ export default defineComponent({
         </SettingList>
       </>
     )
-  }
+  },
 })
