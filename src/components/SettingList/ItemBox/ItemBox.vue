@@ -1,4 +1,4 @@
-<template scoped>
+<template>
   <div
     mb-10px shadow-item rounded-7px
     w="100%"
