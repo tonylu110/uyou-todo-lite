@@ -1,9 +1,7 @@
 import { ref, watchEffect } from 'vue'
-import { appWindow } from '@tauri-apps/api/window'
-import { useI18n } from 'vue-i18n'
 import emitter from '../../utils/emitter'
 import getCloudTodo from '../../utils/getCloudTodo'
-import Dialog from '../Dialog/Dialog.vue'
+import WindowButton from './WindowButton'
 
 const TabBar: SetupFC = () => {
   const props = withDefaults(defineProps<{
@@ -24,115 +22,67 @@ const TabBar: SetupFC = () => {
     leftFn: []
   }>()
 
-  const { t } = useI18n()
   const isLight = ref(props.bgColor === 'light')
-
-  const pin = ref(localStorage.getItem('pin') === 'true')
-  appWindow.setAlwaysOnTop(pin.value)
-
-  const pinWindow = () => {
-    pin.value = !pin.value
-    localStorage.setItem('pin', `${pin.value}`)
-    appWindow.setAlwaysOnTop(pin.value)
-  }
 
   watchEffect(() => {
     isLight.value = props.bgColor === 'light'
     emitter.emit('titleColor', isLight.value)
   })
 
-  const noTitleBar = ref(localStorage.getItem('noTitleBar') === 'true')
-  emitter.on('noTitleBar', (data) => {
-    noTitleBar.value = data as boolean
-  })
-
-  const dialogShow = ref(false)
-
   return () => (
     <>
       <div
         data-tauri-drag-region
-        backdrop-blur-5px
-        bg={isLight.value ? 'white/50' : '#7a695cdd'} sticky top={noTitleBar.value ? '0' : '41px'}
-        h-50px w-screen z-1
-        flex justify-center items-center
-        shadow="md black/20"
+        backdrop-blur-5px bg-transparent
+        sticky h-90px w-screen z-1
+        flex justify-between items-center
       >
-        {noTitleBar.value
-          ? <div
-          absolute left-13px
-          border={pin.value ? '1px solid error-d hover:error-h active:error-a' : (isLight.value ? '1px solid black/5' : '1px solid black/5')}
-          h-25px w-25px cursor-pointer
-          flex justify-center items-center
-          rounded-25px
-          bg={pin.value ? 'error-d hover:error-h active:error-a' : 'hover:black/10 active:black/20 black/5'}
-          onClick={pinWindow}
-        >
-          <div i-fluent:pin-48-filled c={pin.value ? 'white' : (isLight.value ? '#555' : 'white')} text-13px></div>
-        </div>
-          : null}
-        {props.showLeftImg
-          ? (
         <div
-          absolute left={noTitleBar.value ? '48px' : '10px'}
-          border="1px solid #594b4230"
-          h-30px w-30px cursor-pointer
-          flex justify-center items-center
-          rounded-5px bg="hover:black/10 active:black/20"
-          onClick={() => emit('leftFn')}
+          m="l-12px y-12px" h="[calc(100%-24px)]"
+          flex="~ col" justify-between
         >
-          <div className={props.leftImg} c={isLight.value ? '#333' : 'white'} text-20px></div>
-        </div>)
-          : null}
-        <div data-tauri-drag-region font-bold c={isLight.value ? '#333' : 'white'}>{props.title}</div>
-        {props.showRightImg && localStorage.getItem('uid')
-          ? <div
-          absolute left={noTitleBar.value ? '84px' : ''} right={noTitleBar.value ? '' : '46px'}
-          border="1px solid #594b4230"
-          h-30px w-30px cursor-pointer
-          flex justify-center items-center
-          rounded-5px bg="hover:black/10 active:black/20"
-          onClick={() => getCloudTodo()}
-        >
-          <div i-ph:cloud-arrow-down-bold c-white text-20px></div>
+          {props.showLeftImg
+            ? (
+              <div
+                bg="black/10 hover:black/20 active:black/30 dark:#999/10 dark:hover:#999/20 dark:active:#999/30"
+                h-30px w-30px cursor-pointer
+                flex justify-center items-center rounded-5px
+                onClick={() => emit('leftFn')}
+              >
+                <div className={props.leftImg} c="#555 dark:#bbb" text-20px></div>
+              </div>)
+            : null}
+          <div data-tauri-drag-region font-bold c="#555 dark:#bbb" text-18px>{props.title}</div>
         </div>
-          : null}
-        {props.showRightImg
-          ? <div
-          absolute right={noTitleBar.value ? '48px' : '10px'}
-          border="1px solid #594b4230"
-          h-30px w-30px cursor-pointer
-          flex justify-center items-center
-          rounded-5px bg="hover:black/10 active:black/20"
-          onClick={() => emitter.emit('showAddItem')}
+        <div
+          m="r-12px y-12px" h="[calc(100%-24px)]"
+          flex="~ col" justify-between items-end
         >
-          <div i-mdi-plus c-white text-20px></div>
+          <WindowButton/>
+          <div flex items-center>
+            {props.showRightImg && localStorage.getItem('uid')
+              ? <div
+                  bg="black/10 hover:black/20 active:black/30 dark:#999/10 dark:hover:#999/20 dark:active:#999/30"
+                  h-30px w-30px cursor-pointer mr-10px
+                  flex justify-center items-center rounded-5px
+                  onClick={() => getCloudTodo()}
+                >
+                  <div i-ph:cloud-arrow-down-bold c="#555 dark:#bbb" text-20px></div>
+                </div>
+              : null}
+            {props.showRightImg
+              ? <div
+                  bg="black/10 hover:black/20 active:black/30 dark:#999/10 dark:hover:#999/20 dark:active:#999/30"
+                  h-30px w-30px cursor-pointer
+                  flex justify-center items-center rounded-5px
+                  onClick={() => emitter.emit('showAddItem')}
+                >
+                  <div i-mdi-plus c="#555 dark:#bbb" text-20px></div>
+                </div>
+              : null}
+          </div>
         </div>
-          : null}
-        {noTitleBar.value
-          ? <div
-          absolute right-13px
-          border="1px solid black/5 hover:error-d active:error-a"
-          h-25px w-25px cursor-pointer
-          flex justify-center items-center
-          rounded-25px bg="hover:error-d active:error-a black/5"
-          className="group"
-          onClick={() => dialogShow.value = true}
-        >
-          <div i-mdi:close c={isLight.value ? '#333' : 'white'} group-hover-c-white text-15px></div>
-        </div>
-          : null}
       </div>
-      {noTitleBar.value
-        ? <Dialog
-        title={t('closeWindowDialog.title')}
-        dialogShow={dialogShow.value}
-        onCancel={() => dialogShow.value = false}
-        onReturn={() => appWindow.close()}
-      >
-        <span>{t('closeWindowDialog.msg')}</span>
-      </Dialog>
-        : null}
     </>
   )
 }

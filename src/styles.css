@@ -3,7 +3,11 @@
 }
 
 body {
-  --uno: m-0 p-0 select-none font-sans;
+  --uno: m-0 p-0 select-none font-sans bg-transparent;
+}
+
+.app, html {
+  --uno: bg-transparent;
 }
 
 textarea, input {

@@ -3,20 +3,13 @@ import type { Ref } from 'vue'
 import { onMounted, ref } from 'vue'
 import { open } from '@tauri-apps/api/shell'
 import { useI18n } from 'vue-i18n'
-import TitleBar from './components/TitleBar'
-import emitter from './utils/emitter'
+import { usePreferredDark } from '@vueuse/core'
 import Dialog from './components/Dialog/Dialog.vue'
 import { versionCode } from './utils/appVersion'
 import { isLogin, updateData } from './utils/getUser'
 import getCloudTodo from './utils/getCloudTodo'
 
 const { t } = useI18n()
-
-const bgColor = ref('')
-
-emitter.on('bgColor', (data) => {
-  bgColor.value = (data as unknown as string)
-})
 
 const newVersion = ref('')
 const updateMsg: Ref<string[]> = ref([])
@@ -38,15 +31,11 @@ onMounted(() => {
     getCloudTodo()
 })
 
-const noTitleBar = ref(localStorage.getItem('noTitleBar') === 'true')
-emitter.on('noTitleBar', (data) => {
-  noTitleBar.value = data as boolean
-})
+const isDark = usePreferredDark()
 </script>
 
 <template>
-  <div :class="bgColor" h-screen w-screen>
-    <TitleBar v-if="!noTitleBar" />
+  <div h-screen w-screen :class="isDark ? 'dark' : ''" bg="white/50 dark:#333/50">
     <router-view />
     <Dialog
       :title="newVersion"

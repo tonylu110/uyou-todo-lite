@@ -58,7 +58,7 @@ const ToDoList: SetupFC = () => {
   })
 
   return () => (
-    <List bgColor="bg-#edd9b7">
+    <List>
       {showAddItem.value ? <AddItem onAdd={add}/> : null}
       {list.value.filter(listData => !listData.ok).map((item) => {
         return (

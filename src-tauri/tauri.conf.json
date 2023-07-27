@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "uyou ToDo lite",
-    "version": "1.0.2"
+    "version": "2.0.0"
   },
   "tauri": {
     "allowlist": {
@@ -75,7 +75,9 @@
         "minWidth": 350,
         "maxWidth": 400,
         "center": true,
-        "decorations": false
+        "decorations": false,
+        "transparent": true,
+        "label": "main"
       }
     ]
   }

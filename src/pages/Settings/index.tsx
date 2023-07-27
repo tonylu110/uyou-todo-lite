@@ -9,7 +9,6 @@ import langImg from '../../assets/images/lang.png'
 import ItemBox from '../../components/SettingList/ItemBox/ItemBox.vue'
 import ItemButton from '../../components/SettingList/ItemBox/ItemButton/ItemButton.vue'
 import Dialog from '../../components/Dialog/Dialog.vue'
-import emitter from '../../utils/emitter'
 
 const Setting: SetupFC = () => {
   const { t } = useI18n()
@@ -27,16 +26,6 @@ const Setting: SetupFC = () => {
   const clearData = () => {
     localStorage.clear()
     location.reload()
-  }
-
-  const noTitleBar = ref(localStorage.getItem('noTitleBar') === 'true')
-  const setTitleBar = () => {
-    noTitleBar.value = !noTitleBar.value
-    localStorage.setItem('noTitleBar', `${noTitleBar.value}`)
-    emitter.emit('noTitleBar', noTitleBar.value)
-    setTimeout(() => {
-      emitter.emit('titleColor', true)
-    }, 0)
   }
 
   const enterAddItem = ref(localStorage.getItem('enterAddItem') === 'true')
@@ -76,7 +65,6 @@ const Setting: SetupFC = () => {
         </ItemBox>
         <ItemBox>
           <Item title={t('settingsPage.autoStart')} showSwitch={true} switchState={autoStart.value} onSwitchFun={setAutoStart}/>
-          <Item title={t('settingsPage.noTitleBar')} showSwitch={true} switchState={noTitleBar.value} onSwitchFun={setTitleBar}/>
           <Item title={t('settingsPage.enterAdd')} showSwitch={true} switchState={enterAddItem.value} onSwitchFun={setEnterAddItem}/>
         </ItemBox>
         {localStorage.getItem('exMode') === 'true'
