@@ -78,8 +78,8 @@ const Update: SetupFC = () => {
           <div
             w="[calc(100%-20px)]" h-auto
             flex="~ col" justify-center items-center
-            bg-white rounded-7px mb-10px
-            p="x-10px y-0" shadow-item
+            bg="white dark:#333/70" rounded-7px mb-10px
+            border="1px solid black/20" p="x-10px y-0"
           >
             <img
               h-100px m="x-0 y-15px"

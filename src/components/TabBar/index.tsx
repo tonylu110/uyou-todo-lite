@@ -33,9 +33,9 @@ const TabBar: SetupFC = () => {
     <>
       <div
         data-tauri-drag-region
-        backdrop-blur-5px bg-transparent
         sticky h-90px w-screen z-1
         flex justify-between items-center
+        bg="white/50 dark:#333/50"
       >
         <div
           m="l-12px y-12px" h="[calc(100%-24px)]"
@@ -67,7 +67,7 @@ const TabBar: SetupFC = () => {
                   flex justify-center items-center rounded-5px
                   onClick={() => getCloudTodo()}
                 >
-                  <div i-ph:cloud-arrow-down-bold c="#555 dark:#bbb" text-20px></div>
+                  <div i-ph:file-cloud-bold c="#555 dark:#bbb" text-20px></div>
                 </div>
               : null}
             {props.showRightImg
@@ -77,7 +77,7 @@ const TabBar: SetupFC = () => {
                   flex justify-center items-center rounded-5px
                   onClick={() => emitter.emit('showAddItem')}
                 >
-                  <div i-mdi-plus c="#555 dark:#bbb" text-20px></div>
+                  <div i-ph:plus-circle-bold c="#555 dark:#bbb" text-20px></div>
                 </div>
               : null}
           </div>

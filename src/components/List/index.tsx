@@ -25,8 +25,8 @@ const List: SetupFC = () => {
   return () => (
     <PerfectScrollbar
       w="[calc(100vw-20px)]" h={noTitleBar.value ? '[calc(100vh-60px)]' : '[calc(100vh-100px)]'}
-      top-0 pt={noTitleBar.value ? '60px' : '100px'} px-10px
-      className="!fixed"
+      top-p0px px-10px bg="white/50 dark:#333/50"
+      className="!fixed" pt-10px
     >
       { renderSlot(slots, 'default') }
     </PerfectScrollbar>

@@ -35,7 +35,7 @@ const isDark = usePreferredDark()
 </script>
 
 <template>
-  <div h-screen w-screen :class="isDark ? 'dark' : ''" bg="white/50 dark:#333/50">
+  <div h-screen w-screen :class="isDark ? 'dark' : ''">
     <router-view />
     <Dialog
       :title="newVersion"
