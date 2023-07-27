@@ -21,7 +21,7 @@ const emits = defineEmits<{
 
 <style scoped>
 .item-button {
-  --uno: relative w-[calc(100%-30px)] h-30px min-h-30px p-x-15px p-y-10px rounded-7px border-1px border-solid border-black/20 bg-white dark:bg-#333/70 cursor-pointer mb-10px flex items-center justify-center c-#333 font-bold;
+  --uno: relative w-[calc(100%-32px)] h-30px min-h-30px p-x-15px p-y-10px rounded-7px border-1px border-solid border-black/20 bg-white dark:bg-#333/70 cursor-pointer mb-10px flex items-center justify-center c-#333 font-bold;
 }
 .item-button:active {
   --uno: bg-#5985eb c-white border-none;

@@ -87,11 +87,11 @@ const Update: SetupFC = () => {
               alt="logo"
               onClick={toDev}
             />
-            <span mb={newVersion.value ? '' : '15px'} c="black/40" font-bold>
+            <span mb={newVersion.value ? '' : '15px'} c="#555 dark:#bbb" font-bold>
               uyou ToDo lite v{appVersion}
             </span>
             {newVersion.value
-              ? <span c="black/40" mt-5px text-14px mb-15px font-bold>
+              ? <span c="#555 dark:#bbb" mt-5px text-14px mb-15px font-bold>
               {newVersion.value}
             </span>
               : null}
@@ -102,7 +102,7 @@ const Update: SetupFC = () => {
               border-t="1px solid black/15"
               p="y-5px x-15px"
             >
-              <span c-black text-16px font-bold mt-10px>
+              <span c="#555 dark:#bbb" text-16px font-bold mt-10px>
                 {t('updatePage.changelog')}
               </span>
               <ul w="100%">

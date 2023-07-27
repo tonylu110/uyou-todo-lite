@@ -34,13 +34,13 @@ const Lang: SetupFC = () => {
         bgColor="light"
       />
       <SettingList>
-        <div mb-10px shadow-item rounded-7px w="100%">
+        <div mb-10px border="1px solid black/10" rounded-7px>
           <div rounded-7px overflow-hidden>
             <div
               relative min-h-30px h-30px w="[calc(100%-30px)]"
-              p="y-10px x-15px" bg="white active:primary-d" cursor-pointer
+              p="y-10px x-15px" bg="white dark:#333/70 active:primary-d" cursor-pointer
               flex items-center justify-between
-              c="#333 active:white" border-b="1px solid black/10"
+              c="#555 dark:#bbb active:white" border-b="1px solid black/10"
               onClick={() => menuClick('withSystem')}
             >
               <span>{t('langPage.withSys')}</span>
@@ -48,9 +48,9 @@ const Lang: SetupFC = () => {
             </div>
             <div
               relative min-h-30px h-30px w="[calc(100%-30px)]"
-              p="y-10px x-15px" bg="white active:primary-d" cursor-pointer
+              p="y-10px x-15px" bg="white dark:#333/70 active:primary-d" cursor-pointer
               flex items-center justify-between
-              c="#333 active:white" border-b="1px solid black/10"
+              c="#555 dark:#bbb active:white" border-b="1px solid black/10"
               onClick={() => menuClick('en-us')}
             >
               <span>English</span>
@@ -58,9 +58,9 @@ const Lang: SetupFC = () => {
             </div>
             <div
               relative min-h-30px h-30px w="[calc(100%-30px)]"
-              p="y-10px x-15px" bg="white active:primary-d" cursor-pointer
+              p="y-10px x-15px" bg="white dark:#333/70 active:primary-d" cursor-pointer
               flex items-center justify-between
-              c="#333 active:white" border-b="1px solid black/10"
+              c="#555 dark:#bbb active:white" border-b="1px solid black/10"
               onClick={() => menuClick('zh-cn')}
             >
               <span>中文（简体）</span>
@@ -68,9 +68,9 @@ const Lang: SetupFC = () => {
             </div>
             <div
               relative min-h-30px h-30px w="[calc(100%-30px)]"
-              p="y-10px x-15px" bg="white active:primary-d" cursor-pointer
+              p="y-10px x-15px" bg="white dark:#333/70 active:primary-d" cursor-pointer
               flex items-center justify-between
-              c="#333 active:white"
+              c="#555 dark:#bbb active:white"
               onClick={() => menuClick('zh-tw')}
             >
               <span>中文（繁體）</span>

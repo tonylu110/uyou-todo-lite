@@ -2,7 +2,6 @@
   <div
     mb-10px rounded-7px
     border="1px solid black/10"
-    w="100%"
   >
     <div rounded-7px overflow-hidden class="box">
       <slot />

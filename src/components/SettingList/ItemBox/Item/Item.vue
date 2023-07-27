@@ -22,7 +22,7 @@ const emits = defineEmits<{
 
 <template>
   <div
-    relative w="[calc(100%-30px)]" min-h-30px h-30px
+    relative w="[calc(100%-32px)]" min-h-30px h-30px
     p="y-10px x-15px" rounded-7px border="1px solid black/20"
     :bg="`white ${showSwitch ? 'white dark:#333/70' : 'white dark:#333/70 active:primary-d'}` "
     :cursor="showSwitch ? 'auto' : 'pointer'"

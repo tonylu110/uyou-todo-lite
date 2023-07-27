@@ -38,7 +38,7 @@ const Switch: SetupFC = () => {
         <div
           translate={props.swichState ? '' : 'x-[-1.75em]'}
           w-8px h-8px rounded-full
-          bg="#ccc dark:#444/70" border="1px solid #ccc dark:#444/70"
+          bg="#eee dark:#444/70" border="1px solid #ccc dark:#444/70"
           transition-transform-300 ml=".55em" mt=".05em"
         />
       </div>
