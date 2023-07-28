@@ -48,9 +48,9 @@ function menu() {
   <div relative mb-10px w="[calc(100vw-40px)]">
     <div
       w-40px h-40px bg="#00b600 active:#00a600" left="[-3px]"
-      absolute top="50%" translate="y-[-50%]"
-      ml-4px rounded-24 cursor-pointer
-      flex justify-center items-center
+      absolute top="50%" translate="y-[-50%]" transition="transform !300 ease-in-out"
+      ml-4px rounded-24 cursor-pointer hover:opacity-100
+      flex justify-center items-center opacity-0
       shadow="sm black/30" border="3px solid white"
       class="ok"
       @click="setOk"
@@ -59,9 +59,9 @@ function menu() {
     </div>
     <div
       w-40px h-40px bg="#d6010f active:#b6000b" right="[-20px]"
-      absolute top="50%" translate="y-[-50%]"
-      ml-4px rounded-24 cursor-pointer
-      flex justify-center items-center
+      absolute top="50%" translate="y-[-50%]" transition="transform !300 ease-in-out"
+      ml-4px rounded-24 cursor-pointer hover:opacity-100
+      flex justify-center items-center opacity-0
       shadow="sm black/30" border="3px solid white"
       class="del"
       @click="deleteItem"
@@ -70,38 +70,37 @@ function menu() {
     </div>
     <div
       ref="itemDom" relative w="[calc(100vw-40px)]"
-      bg="#f6f2e9" h-auto p-10px rounded-5px
+      bg="white/50 dark:#333/50" h-auto p-10px rounded-5px
       shadow="sm black/30" transition="transform !300 ease-in-out"
-      pointer-events-none
+      pointer-events-none flex="~ col-reverse"
       class="item"
     >
       <div
-        bg="#ede4d8" m="l-[-10px] t-[-10px]" p="y-5px x-10px"
-        w="100%" rounded="tl-7px tr-7px"
+        m="l--10px b--10px t-7px" p="y-5px x-10px"
+        w="100%" rounded="bl-7px br-7px"
         flex justify-between items-center
       >
-        <span c="#cebfae">{{ getTime(time) }}</span>
-        <div
-          h-10px p-5px m="r-[-3px]" bg="black/7 active:black/14"
-          flex justify-center items-center
-          rounded-3px c="#6e492f" select-none
-          cursor-pointer pointer-events-auto
-          opacity-0 hover:opacity-100 transition="opacity 300 ease-in-out"
-          @click="menu"
-        >
-          <div i-ph:copy-bold text-14px />
-        </div>
+        <span c="#555/50 dark:#bbb/50" text-12px>{{ getTime(time) }}</span>
       </div>
       <span
-        block mt-10px
-        select-text pointer-events-auto
-        transition-300 bg="selection:#dcc6a9"
+        block select-text pointer-events-auto
+        transition-300 bg="selection:black/10"
         overflow-hidden text-ellipsis
-        :c="okState ? '#cebfae' : '#6e492f'"
+        :c="okState ? '#555/30 dark:#bbb/30' : '#555 dark:#bbb'"
         :line="okState ? 'through' : ''"
       >
         {{ text }}
       </span>
+      <div
+        h-10px p-5px m="r-[-3px]" bg="black/7 active:black/14"
+        flex justify-center items-center absolute right-10px top-8px
+        rounded-3px c="#6e492f" select-none
+        opacity-0 hover:opacity-100 cursor-pointer pointer-events-auto
+        transition="opacity 300 ease-in-out"
+        @click="menu"
+      >
+        <div i-ph:copy-bold text-14px />
+      </div>
     </div>
   </div>
 </template>

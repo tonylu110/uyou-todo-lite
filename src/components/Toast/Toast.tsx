@@ -14,7 +14,7 @@ const Toast: SetupFC = () => {
     <div
       p="x-21px y-7px" z-10000 rounded-full font-bold
       c={isDark.value ? '#bbb' : '#555'}
-      bg={isDark.value ? '#777/70' : 'white/70'}
+      bg={isDark.value ? '#555/90' : 'white/90'}
       shadow="sm black/30" text-center
       animate-duration-300 animate-fill-mode-forwards animate-ease
       top={props.center ? '50%' : ''}
