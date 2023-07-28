@@ -50,6 +50,7 @@ const Setting: SetupFC = () => {
         bgColor="light"
       />
       <SettingList>
+        {/* <ColorChange/> */}
         <Item
           title={isLogin ? t('settingsPage.myAcc') : t('settingsPage.notLogin')}
           onItemFun={() => router.push('/account')}

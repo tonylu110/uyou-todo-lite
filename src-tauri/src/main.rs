@@ -6,6 +6,9 @@ use tauri_plugin_autostart::MacosLauncher;
 use window_vibrancy::{apply_acrylic, apply_vibrancy, NSVisualEffectMaterial};
 use window_shadows::set_shadow;
 
+pub mod color_mode;
+use color_mode::set_color_theme;
+
 fn main() {
     tauri::Builder::default()
         .setup(|app| {
@@ -25,6 +28,7 @@ fn main() {
             Ok(())
         })
         .plugin(tauri_plugin_autostart::init(MacosLauncher::LaunchAgent, Some(vec!["--flag1", "--flag2"])))
+        .invoke_handler(tauri::generate_handler![set_color_theme])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
