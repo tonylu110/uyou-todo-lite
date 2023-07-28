@@ -160,22 +160,24 @@ const Account: SetupFC = () => {
           ? null
           : (
           <div
-            mb-10px rounded-7px shadow-item p="x-15px y-10px"
-            w="[calc(100%-30px)]" bg-white
-            flex="~ col" max-w-550px
+            mb-10px rounded-7px p="x-15px y-10px"
+            w="[calc(100%-32px)]" bg="white dark:#333/70"
+            border="1px solid black/20"
           >
             <input
-              p-15px m="x-0 y-5px"
+              p-15px m="x-0 y-5px" w="[calc(100%-32px)]"
               border="1.5px solid #00000020"
               bg="#00000010" rounded-5px outline-primary-d
+              c="#555 dark:#bbb"
               type="text"
               placeholder={t('accountPage.plzInputAcc')}
               v-model={fromData.uname}
             />
             <input
-              p-15px m="x-0 y-5px"
+              p-15px m="x-0 y-5px" w="[calc(100%-32px)]"
               border="1.5px solid #00000020"
               bg="#00000010" rounded-5px outline-primary-d
+              c="#555 dark:#bbb"
               type="password"
               placeholder={t('accountPage.plzInputPass')}
               v-model={fromData.passwd}
@@ -192,7 +194,12 @@ const Account: SetupFC = () => {
           />
           : null}
         {isLogin.value ? <ItemButton mode="error" onClick={logout}>{t('accountPage.logout')}</ItemButton> : null}
-        <Dialog title={t('accountPage.hit')} dialogShow={dialogShow.value} onReturn={returnFn} onCancel={() => dialogShow.value = !dialogShow.value}>
+        <Dialog
+          title={t('accountPage.hit')}
+          dialogShow={dialogShow.value}
+          onReturn={returnFn}
+          onCancel={() => dialogShow.value = !dialogShow.value}
+        >
           {dialogMsg.value}
         </Dialog>
       </SettingList>

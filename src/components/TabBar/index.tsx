@@ -1,4 +1,5 @@
 import { ref, watchEffect } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import emitter from '../../utils/emitter'
 import getCloudTodo from '../../utils/getCloudTodo'
 import WindowButton from './WindowButton'
@@ -22,6 +23,9 @@ const TabBar: SetupFC = () => {
     leftFn: []
   }>()
 
+  const router = useRouter()
+  const route = useRoute()
+
   const isLight = ref(props.bgColor === 'light')
 
   watchEffect(() => {
@@ -41,17 +45,30 @@ const TabBar: SetupFC = () => {
           m="l-12px y-12px" h="[calc(100%-24px)]"
           flex="~ col" justify-between
         >
-          {props.showLeftImg
-            ? (
-              <div
-                bg="black/10 hover:black/20 active:black/30 dark:#999/10 dark:hover:#999/20 dark:active:#999/30"
-                h-30px w-30px cursor-pointer
-                flex justify-center items-center rounded-5px
-                onClick={() => emit('leftFn')}
-              >
-                <div className={props.leftImg} c="#555 dark:#bbb" text-20px></div>
-              </div>)
-            : null}
+          <div flex>
+            {props.showLeftImg
+              ? (
+                <div
+                  bg="black/10 hover:black/20 active:black/30 dark:#999/10 dark:hover:#999/20 dark:active:#999/30"
+                  h-30px w-30px cursor-pointer mr-10px
+                  flex justify-center items-center rounded-5px
+                  onClick={() => emit('leftFn')}
+                >
+                  <div className={props.leftImg} c="#555 dark:#bbb" text-20px></div>
+                </div>)
+              : null}
+            {route.name !== 'home'
+              ? (
+                <div
+                  bg="black/10 hover:black/20 active:black/30 dark:#999/10 dark:hover:#999/20 dark:active:#999/30"
+                  h-30px w-30px cursor-pointer
+                  flex justify-center items-center rounded-5px
+                  onClick={() => router.push('/')}
+                >
+                  <div i-ph:house-bold c="#555 dark:#bbb" text-20px></div>
+                </div>)
+              : null}
+          </div>
           <div data-tauri-drag-region font-bold c="#555 dark:#bbb" text-18px>{props.title}</div>
         </div>
         <div
