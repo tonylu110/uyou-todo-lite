@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
 import { ref, watchEffect } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { createToast } from '../../Toast'
 import getTime from '../../../utils/getTime'
 
@@ -18,6 +19,8 @@ const emits = defineEmits<{
   (e: 'setOk', id: number, okState: boolean): void
   (e: 'del', id: number): void
 }>()
+
+const { t } = useI18n()
 
 const okState = ref(false)
 
@@ -37,7 +40,7 @@ const itemDom = ref(null) as unknown as Ref<Element>
 function menu() {
   navigator.clipboard.writeText(props.text).then(() => {
     createToast({
-      msg: 'copy success',
+      msg: t('copyToast'),
       center: true,
     }, itemDom.value)
   })
@@ -85,21 +88,21 @@ function menu() {
       <span
         block select-text pointer-events-auto
         transition-300 bg="selection:black/10"
-        overflow-hidden text-ellipsis
+        whitespace-pre-wrap break-words
         :c="okState ? '#555/30 dark:#bbb/30' : '#555 dark:#bbb'"
         :line="okState ? 'through' : ''"
       >
         {{ text }}
       </span>
       <div
-        h-10px p-5px m="r-[-3px]" bg="black/7 active:black/14"
+        h-10px p-5px m="r-[-3px]" bg="#bbb dark:#333"
         flex justify-center items-center absolute right-10px top-8px
         rounded-3px c="#6e492f" select-none
         opacity-0 hover:opacity-100 cursor-pointer pointer-events-auto
         transition="opacity 300 ease-in-out"
         @click="menu"
       >
-        <div i-ph:copy-bold text-14px />
+        <div i-ph:copy-bold text-14px c="#555 dark:#bbb" />
       </div>
     </div>
   </div>

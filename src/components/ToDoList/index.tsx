@@ -73,8 +73,9 @@ const ToDoList: SetupFC = () => {
         )
       })}
       <div
-        bg="#fff6dc hover:#f3ebd3 active:#eae2ca" w-fit whitespace-nowrap
-        mb-10px p-x-10px p-y-5px rounded-5px c="#6e492f" font-bold
+        bg="white/50 dark:#333/50 active:white/70 dark:active:#333/70"
+        w-fit whitespace-nowrap
+        mb-10px p-x-10px p-y-5px rounded-5px c="#555 dark:#bbb" font-bold
         flex items-center cursor-pointer shadow="sm black/30"
         onClick={setShowNotDo}
       >
@@ -82,7 +83,8 @@ const ToDoList: SetupFC = () => {
           {t('completed')}
         <div
           ml-5px text-10px
-          rounded-20px bg="#6e492f" c="#fff6dc"
+          rounded-20px bg="#555 dark:#bbb"
+          c="white dark:#333"
           w-1rem h-1rem font-normal
           flex items-center justify-center
         >

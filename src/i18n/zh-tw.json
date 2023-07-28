@@ -76,5 +76,6 @@
     "minute": "分鐘",
     "second": "秒"
   },
-  "today": "今天 "
+  "today": "今天 ",
+  "copyToast": "複製成功"
 }

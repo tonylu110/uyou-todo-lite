@@ -76,5 +76,6 @@
     "minute": "minute | minutes",
     "second": "second | seconds"
   },
-  "today": "Today "
+  "today": "Today ",
+  "copyToast": "copy success"
 }
