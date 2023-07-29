@@ -40,18 +40,40 @@ onMounted(() => {
 </script>
 
 <template>
-  <dialog ref="dialog" :class="`alert ${dialogShow ? '' : 'hide'}`">
-    <div class="title" data-tauri-drag-region>
+  <dialog
+    ref="dialog"
+    :class="`alert ${dialogShow ? '' : 'hide'}`"
+    bg="white dark:#333"
+    border="1px solid #999 dark:black/10"
+  >
+    <div
+      class="title"
+      data-tauri-drag-region
+      c="#333 dark:#bbb"
+    >
       {{ title }}
     </div>
-    <div class="body" :style="{ alignItems: title === t('dialog.hit') ? 'center' : '' }">
+    <div
+      class="body"
+      :style="{ alignItems: title === t('dialog.hit') ? 'center' : '' }"
+      c="#333 dark:#bbb"
+    >
       <slot />
     </div>
     <div class="buttons">
-      <div v-if="cancelButtonShow" class="cancel" @click="emits('cancel')">
+      <div
+        v-if="cancelButtonShow"
+        class="cancel"
+        c="#333 dark:#bbb"
+        @click="emits('cancel')"
+      >
         {{ t('dialog.cancel') }}
       </div>
-      <div class="return" :style="{ width: cancelButtonShow ? '' : '100%' }" @click="emits('return')">
+      <div
+        class="return"
+        :style="{ width: cancelButtonShow ? '' : '100%' }"
+        @click="emits('return')"
+      >
         {{ t('dialog.return') }}
       </div>
     </div>
@@ -62,7 +84,7 @@ onMounted(() => {
 @import "dialogAnimation.css";
 
 .alert {
-  --uno: p-0 z-10 bg-white w-300px rounded-9px shadow-md shadow-black/5 border-1px border-solid border-black/20 overflow-hidden select-none outline-none c-black/65;
+  --uno: p-0 z-10 w-300px rounded-9px shadow-md shadow-black/5 overflow-hidden select-none outline-none c-black/65;
 }
 .alert .title {
   --uno: border-b-1.5px border-b-solid border-b-black/10 p-12px flex justify-center items-center bg-black/5;
