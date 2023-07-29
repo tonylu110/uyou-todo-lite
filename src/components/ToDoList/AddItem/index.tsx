@@ -1,4 +1,3 @@
-import moment from 'moment'
 import { ref, watchEffect } from 'vue'
 import emitter from '../../../utils/emitter'
 
@@ -26,22 +25,16 @@ const AddItem: SetupFC = () => {
     <>
       <div
         relative w="[calc(100vw-40px)]"
-        bg="#f6f2e9" h-auto p-10px mb-10px
+        bg="white/50 dark:#333/50" h-auto p-10px mb-10px
         rounded-5px shadow="sm black/30"
       >
-        <div
-          bg="#ede4d8" m="l-[-10px] t-[-10px]" p="y-5px x-10px"
-          w="100%" rounded="tl-5px tr-5px"
-          flex justify-between items-center
-        >
-          <span c="#cebfae">{moment(time.value).format('hh:mm A')}</span>
-        </div>
         <textarea
-          mt-10px c="#6e492f" border-none
+          c="#555 dark:#bbb" border-none
           max-w="100%" min-w="100%"
           outline-none bg-transparent resize-none
           text-1rem bg="selection:#dcc6a9"
-          rows="3"
+          rows="4"
+          v-focus
           v-model={text.value}
           onKeydown={(e: KeyboardEvent) => e.code.toLocaleLowerCase() === 'enter' && enterAddItem ? add() : null}
         />

@@ -97,7 +97,7 @@ function menu() {
       <div
         h-10px p-5px m="r-[-3px]" bg="#bbb dark:#333"
         flex justify-center items-center absolute right-10px top-8px
-        rounded-3px c="#6e492f" select-none
+        rounded-3px select-none
         opacity-0 hover:opacity-100 cursor-pointer pointer-events-auto
         transition="opacity 300 ease-in-out"
         @click="menu"
