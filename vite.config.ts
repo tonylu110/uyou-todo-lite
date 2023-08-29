@@ -9,7 +9,11 @@ export default defineConfig(async () => ({
   plugins: [
     vueMacros({
       plugins: {
-        vue: vue(),
+        vue: vue({
+          script: {
+            defineModel: true,
+          },
+        }),
         vueJsx: vueJsx(),
       },
     }),

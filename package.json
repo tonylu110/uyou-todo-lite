@@ -18,7 +18,7 @@
     "@tauri-apps/api": "^1.4.0",
     "@vueuse/core": "^10.2.1",
     "tauri-plugin-autostart-api": "github:tauri-apps/tauri-plugin-autostart",
-    "vue": "^3.3.1"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.7",
